@@ -2,11 +2,11 @@
 	import { session } from '$app/stores';
 	import { onMount } from 'svelte';
 	import 'dino-color-picker';
-	import Color from 'color';
 	import Icon from '../components/Icon.svelte';
 
-	// color
-	let color = '#f00';
+	import w3color from '../js/lib/w3color';
+
+	let color = '#000';
 
 	let pickerOpen = true;
 
@@ -15,8 +15,8 @@
 	}
 
 	// updates when `color` updates
-	$: rgbString = Color(color).rgb().string();
-	$: hslString = Color(color).hsl().string();
+	$: rgbString = color && w3color(color).toRgbString();
+	$: hslString = color && w3color(color).toHslString();
 	$: hexString = color;
 
 	let colorPicker;
@@ -27,19 +27,16 @@
 	});
 
 	const readColorString = (str) => {
-		try {
-			Color(str);
-			color = Color(str).hex();
-		} catch (err) {
-			// TODO toast for invalid color
-			console.log(err);
-			document.getElementById('auto-detect-input').value = '';
-		}
+		let c = w3color(str);
+		if (!c.valid) return; // todo toast saying invalid color
+		color = c.toHexString();
+		colorPicker.value = color;
 	};
 </script>
 
 <svelte:head>
 	<title>{$session.languageDictionary.appName}</title>
+	<script src="https://www.w3schools.com/lib/w3color.js"></script>
 </svelte:head>
 
 <h1 class="text-center">{$session.languageDictionary.appName}</h1>
