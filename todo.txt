@@ -1,3 +1,4 @@
+future:
 cmyk
 hsv
 alpha/opacity
@@ -7,3 +8,9 @@ random
 local storage
 history
 save and organize colors
+
+future components:
+range inputs, toast for copy, slider for mobile
+
+maybe:
+info btn next to input that shows examples of what you can type

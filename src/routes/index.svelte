@@ -14,10 +14,7 @@
 		console.log(color);
 	}
 
-	const thingy = Color('rgb(255, 255, 255)');
-	console.log(thingy);
-
-	// updates when `color` updates, and checks that `colorPicker` is defined (after mount)
+	// updates when `color` updates
 	$: rgbString = color && Color && Color(color).rgb().string();
 	$: hslString = color && Color && Color(color).hsl().string();
 	$: hexString = color;
@@ -29,23 +26,15 @@
 		colorPicker.value = color;
 	});
 
-	function rgbToHex({ r, g, b }) {
-		r = r.toString(16);
-		g = g.toString(16);
-		b = b.toString(16);
-		r = r.length == 1 ? '0' + r : r;
-		g = g.length == 1 ? '0' + g : g;
-		b = b.length == 1 ? '0' + b : b;
-
-		return ('#' + r + g + b).toUpperCase();
-	}
-
-	function randInt(min, max) {
-		return Math.floor(Math.random() * (max - min + 1)) + min;
-	}
-
 	const readColorString = (str) => {
-		color = Color(str).hex();
+		try {
+			Color(str);
+			color = Color(str).hex();
+		} catch (err) {
+			// TODO toast for invalid color
+			console.log(err);
+			document.getElementById('auto-detect-input').value = '';
+		}
 	};
 </script>
 
@@ -56,7 +45,14 @@
 <h1 class="text-center">{$session.languageDictionary.appName}</h1>
 
 <div class="relative z-10">
-	<input autofocus type="text" class="surface" on:change={(e) => readColorString(e.target.value)} />
+	<input
+		id="auto-detect-input"
+		autofocus
+		type="text"
+		class="surface"
+		placeholder={$session.languageDictionary.messages['Type a color...']}
+		on:change={(e) => readColorString(e.target.value)}
+	/>
 	<button
 		class="w-16 h-16 rounded"
 		style="background: {color}"

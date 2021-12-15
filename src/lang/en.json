@@ -7,5 +7,8 @@
 		"The resource could not be found": "The resource could not be found",
 		"Go back to the homepage": "Go back to the homepage",
 		"Error": "Error"
+	},
+	"messages": {
+		"Type a color...": "Type a color..."
 	}
 }
