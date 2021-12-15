@@ -90,7 +90,7 @@
 		>
 			<div class="absolute top-16">
 				<dino-color-picker
-					class="surface shadow-none {pickerOpen ? 'block' : 'hidden'}"
+					class="surface shadow-none bg-white {pickerOpen ? 'block' : 'hidden'}"
 					on:change={(event) => {
 						color = event.target.value;
 						document.getElementById('auto-detect-input').value = '';
