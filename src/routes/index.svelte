@@ -5,6 +5,7 @@
 	import Icon from '../components/Icon.svelte';
 
 	let color = '#000';
+	let pickerOpen = true;
 
 	onMount(() => {
 		document.querySelector('dino-color-picker').value = color;
@@ -17,14 +18,23 @@
 
 <h1 class="text-center">{$session.languageDictionary.appName}</h1>
 
-<div class="flex">
-	<div class="w-16 h-16 rounded" style="background: {color}" />
-	<dino-color-picker
-		class="surface shadow-none ml-auto"
-		on:change={(event) => {
-			color = event.target.value;
+<div class="relative z-10">
+	<button
+		class="w-16 h-16 rounded"
+		style="background: {color}"
+		on:click|self={() => {
+			pickerOpen = !pickerOpen;
 		}}
-	/>
+	>
+		<div class="absolute top-16">
+			<dino-color-picker
+				class="surface shadow-none {pickerOpen ? 'block' : 'hidden'}"
+				on:change={(event) => {
+					color = event.target.value;
+				}}
+			/>
+		</div>
+	</button>
 </div>
 
 <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
