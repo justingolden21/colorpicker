@@ -17,7 +17,7 @@
 		on:change={onChange}
 	/>
 	<button
-		on:click={(evt) => {
+		on:click={() => {
 			const str = input.value;
 			input.focus();
 			input.setSelectionRange(0, str.length);
