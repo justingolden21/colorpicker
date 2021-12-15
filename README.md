@@ -2,7 +2,7 @@
 
 ### Code
 
-A svelte kit boilerplate using tailwind css with eslint / prettier / airbnb formatting and styling. It supports netlify as a backend. It is also meant to support multiple page websites and PWAs. Supports i18n. Supports dark mode. Set up to use svg icons; currently using hero icons.
+A svelte kit boilerplate using tailwind css with eslint / prettier / airbnb formatting and styling. It supports netlify as a backend. It is also meant to support multiple page websites and PWAs. Supports i18n. Set up to use svg icons; currently using hero icons.
 
 ### Setup
 
