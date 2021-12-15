@@ -27,6 +27,4 @@
 	<link rel="mask-icon" href="img/icons/safari-pinned-tab.svg" color="#FFFFFF" />
 </svelte:head>
 
-<div class="p-8">
-	<slot />
-</div>
+<slot />
