@@ -17,6 +17,8 @@
 	// updates when `color` updates
 	$: rgbString = color && w3color(color).toRgbString();
 	$: hslString = color && w3color(color).toHslString();
+	$: hwbString = color && w3color(color).toHwbString();
+	$: cmykString = color && w3color(color).toCmykString();
 	$: hexString = color;
 
 	let colorPicker;
@@ -84,6 +86,8 @@
 
 		<input class="surface w-full h-8" type="text" value={hexString} />
 		<input class="surface w-full h-8" type="text" value={hslString} />
+		<input class="surface w-full h-8" type="text" value={hwbString} />
+		<input class="surface w-full h-8" type="text" value={cmykString} />
 	</div>
 	<div class="surface">hi</div>
 	<div class="surface">hi</div>
