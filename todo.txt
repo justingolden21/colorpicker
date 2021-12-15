@@ -1,6 +1,4 @@
 future:
-cmyk
-hsv
 alpha/opacity
 url param
 link to color
