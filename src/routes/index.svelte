@@ -133,6 +133,7 @@
 						min="0"
 						max="255"
 						data-type={type}
+						class="hidden sm:block"
 						type="range"
 						on:change={setRgbItem}
 						value={type == 'red' ? red : type == 'green' ? green : blue}
