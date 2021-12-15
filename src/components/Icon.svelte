@@ -6,9 +6,14 @@
 	const icons = [
 		{
 			name: 'close',
-			svg: `<path stroke-linecap="square" stroke-linejoin="square" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>`
+			path: `M6 18L18 6M6 6l12 12`
+		},
+		{
+			name: 'copy',
+			path: `M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z`
 		}
 	];
+
 	$: icon = icons.find((i) => i.name === name);
 </script>
 
@@ -21,5 +26,5 @@
 	xmlns:xlink="http://www.w3.org/1999/xlink"
 	viewBox={icon.viewbox ?? '0 0 24 24'}
 >
-	{@html icon.svg}
+	<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={icon.path} />
 </svg>
