@@ -105,8 +105,10 @@
 	<div class="surface">
 		<h3>RGB</h3>
 
-		<CopyableInput value={rgbString} onChange={readColorString} />
-		<CopyableInput value={hexString} onChange={readColorString} />
+		<div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+			<CopyableInput value={rgbString} onChange={readColorString} />
+			<CopyableInput value={hexString} onChange={readColorString} />
+		</div>
 
 		<div class="grid grid-cols-3 gap-2">
 			{#each ['red', 'green', 'blue'] as type}
