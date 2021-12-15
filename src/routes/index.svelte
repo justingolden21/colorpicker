@@ -159,6 +159,16 @@
 	<div class="surface">hi</div>
 </div>
 
+<button class="surface rounded-full w-12 h-12">
+	<Icon name="heart" class="inline w-4 h-4" />
+</button>
+<button class="surface rounded-full w-12 h-12">
+	<Icon name="history" class="inline w-4 h-4" />
+</button>
+<button class="surface rounded-full w-12 h-12">
+	<Icon name="saved" class="inline w-4 h-4" />
+</button>
+
 <style lang="postcss">
 	/* .colormode {
 		/* @apply surface; */
