@@ -118,7 +118,7 @@
 
 <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
 	<div class="surface">
-		<h3>RGB</h3>
+		<h3 class="text-center">RGB</h3>
 
 		<div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
 			<CopyableInput value={rgbString} onChange={readColorString} />
