@@ -34,12 +34,18 @@
 		color = c.toHexString();
 		colorPicker.value = color;
 	};
+
+	function handleKeydown(event) {
+		if (event.key === 'Escape') pickerOpen = false;
+	}
 </script>
 
 <svelte:head>
 	<title>{$session.languageDictionary.appName}</title>
 	<script src="https://www.w3schools.com/lib/w3color.js"></script>
 </svelte:head>
+
+<svelte:window on:keydown={handleKeydown} />
 
 <h1 class="text-center">{$session.languageDictionary.appName}</h1>
 
