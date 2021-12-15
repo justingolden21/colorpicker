@@ -15,8 +15,8 @@
 	}
 
 	// updates when `color` updates
-	$: rgbString = color && Color && Color(color).rgb().string();
-	$: hslString = color && Color && Color(color).hsl().string();
+	$: rgbString = Color(color).rgb().string();
+	$: hslString = Color(color).hsl().string();
 	$: hexString = color;
 
 	let colorPicker;
@@ -65,6 +65,7 @@
 				class="surface shadow-none {pickerOpen ? 'block' : 'hidden'}"
 				on:change={(event) => {
 					color = event.target.value;
+					document.getElementById('auto-detect-input').value = '';
 				}}
 			/>
 		</div>
