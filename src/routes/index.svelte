@@ -24,6 +24,8 @@
 	$: hexString = color;
 
 	$: red = color && w3color(color).red;
+	$: green = color && w3color(color).green;
+	$: blue = color && w3color(color).blue;
 
 	let colorPicker;
 
@@ -44,12 +46,18 @@
 		if (event.key === 'Escape') pickerOpen = false;
 	}
 
-	const setRedString = (evt) => {
+	const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
+
+	const setRgbItem = (evt) => {
 		const str = evt.target.value;
-		const c = w3color(
-			'rgb(' + parseInt(str) + ', ' + w3color(color).green + ', ' + w3color(color).blue + ')'
-		);
-		if (!c.valid) return; // todo toast saying invalid color
+		const type = evt.target.dataset.type;
+		const rgb = [
+			type === 'red' ? parseInt(str) : w3color(color).red,
+			type === 'green' ? parseInt(str) : w3color(color).green,
+			type === 'blue' ? parseInt(str) : w3color(color).blue
+		];
+		const c = w3color('rgb(' + rgb[0] + ', ' + rgb[1] + ', ' + rgb[2] + ')');
+		if (!c.valid) return;
 		color = c.toHexString();
 		colorPicker.value = color;
 	};
@@ -100,7 +108,21 @@
 		<CopyableInput value={rgbString} onChange={readColorString} />
 		<CopyableInput value={hexString} onChange={readColorString} />
 
-		<input class="surface w-full h-8" type="text" on:change={setRedString} value={red} />
+		<div class="grid grid-cols-3 gap-2">
+			{#each ['red', 'green', 'blue'] as type}
+				<div>
+					<label for="{type}-input">{capitalize(type)}:</label>
+					<input
+						id="{type}-input"
+						data-type={type}
+						class="surface w-full h-8"
+						type="text"
+						on:change={setRgbItem}
+						value={type == 'red' ? red : type == 'green' ? green : blue}
+					/>
+				</div>
+			{/each}
+		</div>
 	</div>
 	<div class="surface">
 		<input class="surface w-full h-8" type="text" on:change={readColorString} value={hslString} />
