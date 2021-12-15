@@ -28,7 +28,8 @@
 		colorPicker.value = color;
 	});
 
-	const readColorString = (str) => {
+	const readColorString = (evt) => {
+		const str = evt.target.value;
 		let c = w3color(str);
 		if (!c.valid) return; // todo toast saying invalid color
 		color = c.toHexString();
@@ -56,7 +57,7 @@
 		type="text"
 		class="surface"
 		placeholder={$session.languageDictionary.messages['Type a color...']}
-		on:change={(e) => readColorString(e.target.value)}
+		on:change={readColorString}
 	/>
 	<button
 		class="w-16 h-16 rounded"
@@ -90,10 +91,10 @@
 			</button>
 		</div>
 
-		<input class="surface w-full h-8" type="text" value={hexString} />
-		<input class="surface w-full h-8" type="text" value={hslString} />
-		<input class="surface w-full h-8" type="text" value={hwbString} />
-		<input class="surface w-full h-8" type="text" value={cmykString} />
+		<input class="surface w-full h-8" type="text" on:change={readColorString} value={hexString} />
+		<input class="surface w-full h-8" type="text" on:change={readColorString} value={hslString} />
+		<input class="surface w-full h-8" type="text" on:change={readColorString} value={hwbString} />
+		<input class="surface w-full h-8" type="text" on:change={readColorString} value={cmykString} />
 	</div>
 	<div class="surface">hi</div>
 	<div class="surface">hi</div>
