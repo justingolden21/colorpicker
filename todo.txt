@@ -8,6 +8,7 @@ random
 local storage
 history
 save and organize colors
+quick copy for css color, background, background-color, border-color (dropdown for property, dropdown for css/less/sass, dropdown for color format (rgb,hex,hsl))
 
 future components:
 range inputs, toast for copy, slider for mobile
