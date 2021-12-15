@@ -141,7 +141,7 @@
 						id="{type}-input"
 						data-type={type}
 						class="surface w-full h-8"
-						type="text"
+						type="number"
 						on:change={setRgbItem}
 						value={type == 'red' ? red : type == 'green' ? green : blue}
 					/>
