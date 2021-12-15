@@ -7,7 +7,7 @@
 
 	import w3color from '../js/lib/w3color';
 
-	let color = '#000';
+	let color = '#000000';
 
 	let pickerOpen = true;
 
@@ -34,7 +34,7 @@
 
 	const readColorString = (evt) => {
 		const str = evt.target.value;
-		let c = w3color(str);
+		const c = w3color(str);
 		if (!c.valid) return; // todo toast saying invalid color
 		color = c.toHexString();
 		colorPicker.value = color;
@@ -43,6 +43,16 @@
 	function handleKeydown(event) {
 		if (event.key === 'Escape') pickerOpen = false;
 	}
+
+	const setRedString = (evt) => {
+		const str = evt.target.value;
+		const c = w3color(
+			'rgb(' + parseInt(str) + ', ' + w3color(color).green + ', ' + w3color(color).blue + ')'
+		);
+		if (!c.valid) return; // todo toast saying invalid color
+		color = c.toHexString();
+		colorPicker.value = color;
+	};
 </script>
 
 <svelte:head>
@@ -88,8 +98,8 @@
 		<h3>RGB</h3>
 
 		<CopyableInput value={rgbString} onChange={readColorString} />
+		<CopyableInput value={hexString} onChange={readColorString} />
 
-		<input class="surface w-full h-8" type="text" on:change={readColorString} value={hexString} />
 		<input class="surface w-full h-8" type="text" on:change={setRedString} value={red} />
 	</div>
 	<div class="surface">

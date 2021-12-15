@@ -5,7 +5,7 @@
 	export let onChange;
 </script>
 
-<div class="relative">
+<div class="relative {$$props.class ?? ''}">
 	<input class="surface w-full h-8" type="text" {value} on:change={onChange} />
 	<button
 		class="surface absolute inset-y-0 right-0 flex items-center hover:bg-gray-100 focus:bg-gray-100"
