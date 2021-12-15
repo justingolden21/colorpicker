@@ -19,7 +19,10 @@
 	$: hslString = color && w3color(color).toHslString();
 	$: hwbString = color && w3color(color).toHwbString();
 	$: cmykString = color && w3color(color).toCmykString();
+
 	$: hexString = color;
+
+	$: red = color && w3color(color).red;
 
 	let colorPicker;
 
@@ -95,6 +98,7 @@
 		<input class="surface w-full h-8" type="text" on:change={readColorString} value={hslString} />
 		<input class="surface w-full h-8" type="text" on:change={readColorString} value={hwbString} />
 		<input class="surface w-full h-8" type="text" on:change={readColorString} value={cmykString} />
+		<input class="surface w-full h-8" type="text" on:change={setRedString} value={red} />
 	</div>
 	<div class="surface">hi</div>
 	<div class="surface">hi</div>
