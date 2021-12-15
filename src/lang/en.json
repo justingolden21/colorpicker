@@ -1,7 +1,8 @@
 {
-	"appName": "APP NAME",
-	"appShortName": "APP SHORT NAME",
-	"appDescription": "APP DESCRIPTION",
+	"appName": "Color Picker",
+	"appShortName": "Color Picker",
+	"appDescription": "a simple but powerful color picker and converter for digital artists and web developers",
+    "appKeywords": ["color picker", "color converter"],
 	"pageNames": {
 		"page1": "PAGE 1 NAME",
 		"page2": "PAGE 2 NAME"

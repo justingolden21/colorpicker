@@ -1,7 +1,7 @@
 {
-	"name": "APP NAME",
+	"name": "color-picker",
 	"version": "1.0.0",
-	"description": "APP DESCRIPTION",
+	"description": "a simple but powerful color picker and converter for digital artists and web developers",
 	"scripts": {
 		"dev": "svelte-kit dev",
 		"build": "svelte-kit build",
@@ -10,7 +10,7 @@
 		"format": "prettier --ignore-path .gitignore --ignore-path .prettierignore --write --plugin-search-dir=. .",
 		"generate-assets": "pwa-asset-generator static/img/icons/icon.svg static/img/icons --favicon --mstile --icon-only --opaque true"
 	},
-	"author": "AUTHOR NAME",
+	"author": "Justin Golden",
 	"private": "true",
 	"devDependencies": {
 		"@sveltejs/adapter-netlify": "^1.0.0-next.32",
