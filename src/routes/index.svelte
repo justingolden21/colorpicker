@@ -2,40 +2,13 @@
 	import { session } from '$app/stores';
 	import Icon from '../components/Icon.svelte';
 
-	// import Pickr from '@simonwep/pickr';
+	import 'dino-color-picker';
 
-	// import '@simonwep/pickr/dist/themes/classic.min.css'; // 'classic' theme
-	// import '@simonwep/pickr/dist/themes/monolith.min.css'; // 'monolith' theme
-	// import '@simonwep/pickr/dist/themes/nano.min.css'; // 'nano' theme
+	let color = '#b14945';
 
-	import { onMount } from 'svelte';
-
-	onMount(() => {
-		// const pickr = Pickr.create({
-		// 	el: '.color-picker',
-		// 	theme: 'classic', // or 'monolith', or 'nano'
-		// 	swatches: [],
-		// 	components: {
-		// 		// Main components
-		// 		preview: true,
-		// 		opacity: true,
-		// 		hue: true,
-		// 		// Input / output Options
-		// 		interaction: {
-		// 			// hex: true,
-		// 			// rgba: true,
-		// 			// hsla: true,
-		// 			// hsva: true,
-		// 			// cmyk: true,
-		// 			input: true,
-		// 			clear: true,
-		// 			save: true
-		// 		}
-		// 	}
-		// });
-		// console.log(pickr.hsva);
-		// console.log(hsva);
-	});
+	const onColorChange = (event) => {
+		color = event.target.value;
+	};
 </script>
 
 <svelte:head>
@@ -44,7 +17,6 @@
 
 <h1 class="text-center">{$session.languageDictionary.appName}</h1>
 
-<!-- <div class="color-picker" /> -->
 <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
 	<div class="surface">
 		<!-- <h3>RGB</h3> -->
@@ -61,11 +33,24 @@
 	<div class="surface">hi</div>
 	<div class="surface">hi</div>
 	<div class="surface">hi</div>
+
+	<dino-color-picker on:change={onColorChange} />
+	<div id="preview" style="background: {color}" />
 </div>
 
-<!-- <style lang="postcss">
-	.colormode {
-		/* @apply surface; */
-		@apply border-2  border-gray-200 p-2 rounded;
+<style lang="postcss">
+	main {
+		font-family: sans-serif;
+		text-align: center;
 	}
-</style> -->
+	#preview {
+		margin: 40px auto 0;
+		width: 200px;
+		height: 200px;
+	}
+
+	/* .colormode {
+		/* @apply surface; */
+	/*	@apply border-2  border-gray-200 p-2 rounded;
+	}*/
+</style>

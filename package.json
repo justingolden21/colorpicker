@@ -34,7 +34,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@simonwep/pickr": "^1.8.2",
+		"dino-color-picker": "^0.2.3",
 		"lodash.merge": "^4.6.2"
 	}
 }
