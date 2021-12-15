@@ -70,35 +70,50 @@
 
 <svelte:window on:keydown={handleKeydown} />
 
-<h1 class="text-center">{$session.languageDictionary.appName}</h1>
-
-<div class="relative z-10">
-	<input
-		id="auto-detect-input"
-		autofocus
-		type="text"
-		class="surface"
-		placeholder={$session.languageDictionary.messages['Type a color...']}
-		on:change={readColorString}
-		on:focus={(evt) => evt.target.select()}
-	/>
-	<button
-		class="w-16 h-16 rounded"
-		style="background: {color}"
-		on:click|self={() => {
-			pickerOpen = !pickerOpen;
-		}}
-	>
-		<div class="absolute top-16">
-			<dino-color-picker
-				class="surface shadow-none {pickerOpen ? 'block' : 'hidden'}"
-				on:change={(event) => {
-					color = event.target.value;
-					document.getElementById('auto-detect-input').value = '';
-				}}
-			/>
-		</div>
-	</button>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-2">
+	<div class="relative z-10">
+		<input
+			id="auto-detect-input"
+			autofocus
+			type="text"
+			class="surface"
+			placeholder={$session.languageDictionary.messages['Type a color...']}
+			on:change={readColorString}
+			on:focus={(evt) => evt.target.select()}
+		/>
+		<button
+			class="w-16 h-16 rounded"
+			style="background: {color}"
+			on:click|self={() => {
+				pickerOpen = !pickerOpen;
+			}}
+		>
+			<div class="absolute top-16">
+				<dino-color-picker
+					class="surface shadow-none {pickerOpen ? 'block' : 'hidden'}"
+					on:change={(event) => {
+						color = event.target.value;
+						document.getElementById('auto-detect-input').value = '';
+					}}
+				/>
+			</div>
+		</button>
+	</div>
+	<h1 class="text-center">{$session.languageDictionary.appName}</h1>
+	<div>
+		<button class="surface">
+			<Icon name="link" class="inline w-4 h-4" />
+			Link
+		</button>
+		<button class="surface">
+			<Icon name="reset" class="inline w-4 h-4" />
+			Reset
+		</button>
+		<button class="surface">
+			<Icon name="random" class="inline w-4 h-4" />
+			Random
+		</button>
+	</div>
 </div>
 
 <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
