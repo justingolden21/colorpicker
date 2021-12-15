@@ -1,14 +1,14 @@
 <script>
 	import { session } from '$app/stores';
+	import { onMount } from 'svelte';
+	import 'dino-color-picker';
 	import Icon from '../components/Icon.svelte';
 
-	import 'dino-color-picker';
+	let color = '#000';
 
-	let color = '#b14945';
-
-	const onColorChange = (event) => {
-		color = event.target.value;
-	};
+	onMount(() => {
+		document.querySelector('dino-color-picker').value = color;
+	});
 </script>
 
 <svelte:head>
@@ -16,6 +16,16 @@
 </svelte:head>
 
 <h1 class="text-center">{$session.languageDictionary.appName}</h1>
+
+<div class="flex">
+	<div class="w-16 h-16 rounded" style="background: {color}" />
+	<dino-color-picker
+		class="surface shadow-none ml-auto"
+		on:change={(event) => {
+			color = event.target.value;
+		}}
+	/>
+</div>
 
 <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
 	<div class="surface">
@@ -33,22 +43,9 @@
 	<div class="surface">hi</div>
 	<div class="surface">hi</div>
 	<div class="surface">hi</div>
-
-	<dino-color-picker on:change={onColorChange} />
-	<div id="preview" style="background: {color}" />
 </div>
 
 <style lang="postcss">
-	main {
-		font-family: sans-serif;
-		text-align: center;
-	}
-	#preview {
-		margin: 40px auto 0;
-		width: 200px;
-		height: 200px;
-	}
-
 	/* .colormode {
 		/* @apply surface; */
 	/*	@apply border-2  border-gray-200 p-2 rounded;
