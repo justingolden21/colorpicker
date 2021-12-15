@@ -4,11 +4,22 @@
 	import 'dino-color-picker';
 	import Icon from '../components/Icon.svelte';
 
-	let color = '#000';
+	let color = '#f00';
 	let pickerOpen = true;
+	$: if (color) {
+		console.log(color);
+	}
+
+	// updates when `color` updates, and checks that `colorPicker` is defined (after mount)
+	$: rgbString = color && colorPicker && 'rgba(' + colorPicker.rgb.join(', ') + ')';
+	$: hslString = color && colorPicker && 'hsla(' + colorPicker.hsl.join(', ') + ')';
+	$: hexString = color && colorPicker && colorPicker.value;
+
+	let colorPicker;
 
 	onMount(() => {
-		document.querySelector('dino-color-picker').value = color;
+		colorPicker = document.querySelector('dino-color-picker');
+		colorPicker.value = color;
 	});
 </script>
 
@@ -39,16 +50,19 @@
 
 <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
 	<div class="surface">
-		<!-- <h3>RGB</h3> -->
+		<h3>RGB</h3>
 
 		<div class="relative">
-			<input class="surface w-full h-8" type="text" value="rgb(0, 0, 0)" />
+			<input class="surface w-full h-8" type="text" value={rgbString} />
 			<button
 				class="surface absolute inset-y-0 right-0 flex items-center hover:bg-gray-100 focus:bg-gray-100"
 			>
 				<Icon name="copy" class="w-6 h-6" />
 			</button>
 		</div>
+
+		<input class="surface w-full h-8" type="text" value={hexString} />
+		<input class="surface w-full h-8" type="text" value={hslString} />
 	</div>
 	<div class="surface">hi</div>
 	<div class="surface">hi</div>
