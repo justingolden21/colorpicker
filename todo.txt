@@ -1,0 +1,9 @@
+cmyk
+hsv
+alpha/opacity
+url param
+link to color
+random
+local storage
+history
+save and organize colors
