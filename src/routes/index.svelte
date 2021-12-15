@@ -115,6 +115,14 @@
 				<div>
 					<label for="{type}-input">{capitalize(type)}:</label>
 					<input
+						min="0"
+						max="255"
+						data-type={type}
+						type="range"
+						on:change={setRgbItem}
+						value={type == 'red' ? red : type == 'green' ? green : blue}
+					/>
+					<input
 						id="{type}-input"
 						data-type={type}
 						class="surface w-full h-8"
