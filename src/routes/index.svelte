@@ -102,15 +102,15 @@
 	</div>
 	<h1 class="text-center">{$session.languageDictionary.appName}</h1>
 	<div class="mx-auto">
-		<button class="surface mr-2 mb-2">
+		<button class="btn mr-2 mb-2">
 			<Icon name="link" class="inline w-4 h-4" />
 			Link
 		</button>
-		<button class="surface mr-2 mb-2">
+		<button class="btn mr-2 mb-2">
 			<Icon name="reset" class="inline w-4 h-4" />
 			Reset
 		</button>
-		<button class="surface mr-2 mb-2">
+		<button class="btn mr-2 mb-2">
 			<Icon name="random" class="inline w-4 h-4" />
 			Random
 		</button>
