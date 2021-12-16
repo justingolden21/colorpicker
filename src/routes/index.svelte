@@ -1,16 +1,17 @@
 <script>
 	import { session } from '$app/stores';
 	import { onMount } from 'svelte';
-	import { settings } from '../components/settings';
-	import Icon from '../components/Icon.svelte';
-	import CopyableInput from '../components/CopyableInput.svelte';
-	import Range from '../components/Range.svelte';
-	import { clickOutside } from '../components/clickOutside';
 
 	import w3color from '../js/lib/w3color';
 
-	let color = $settings.color || '#000000';
+	import { settings } from '../components/settings';
+	import { clickOutside } from '../components/clickOutside';
+	import Icon from '../components/Icon.svelte';
+	import CopyableInput from '../components/CopyableInput.svelte';
+	import Range from '../components/Range.svelte';
 
+	let color = $settings.color || '#000000';
+	let colorPicker;
 	let pickerOpen = true;
 
 	$: if (color) {
@@ -18,18 +19,15 @@
 	}
 
 	// updates when `color` updates
-	$: rgbString = color && w3color(color).toRgbString();
-	$: hslString = color && w3color(color).toHslString();
-	$: hwbString = color && w3color(color).toHwbString();
-	$: cmykString = color && w3color(color).toCmykString();
-
+	$: rgbString = w3color(color).toRgbString();
+	$: hslString = w3color(color).toHslString();
+	$: hwbString = w3color(color).toHwbString();
+	$: cmykString = w3color(color).toCmykString();
 	$: hexString = color;
 
-	$: red = color && w3color(color).red;
-	$: green = color && w3color(color).green;
-	$: blue = color && w3color(color).blue;
-
-	let colorPicker;
+	$: red = w3color(color).red;
+	$: green = w3color(color).green;
+	$: blue = w3color(color).blue;
 
 	onMount(async () => {
 		// https://kit.svelte.dev/faq
@@ -42,7 +40,7 @@
 	const readColorString = (evt) => {
 		const str = evt.target.value;
 		const c = w3color(str);
-		if (!c.valid) return; // todo toast saying invalid color
+		if (!c.valid) return; // TODO toast saying invalid color
 		color = c.toHexString();
 		colorPicker.value = color;
 	};
@@ -70,7 +68,6 @@
 
 <svelte:head>
 	<title>{$session.languageDictionary.appName}</title>
-	<script src="https://www.w3schools.com/lib/w3color.js"></script>
 </svelte:head>
 
 <svelte:window on:keydown={handleKeydown} />
