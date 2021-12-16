@@ -126,16 +126,15 @@
 </div>
 
 <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+	<!-- RGB -->
 	<div class="colormode">
 		<h3 class="text-center mb-4">RGB</h3>
-
 		<div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-4">
 			<CopyableInput class="mr-1" value={rgbString} onChange={readColorString} />
 			<CopyableInput class="ml-1" value={hexString} onChange={readColorString} />
 		</div>
-
 		<div class="grid grid-cols-3 gap-2">
-			{#each ['red', 'green', 'blue'] as type}
+			{#each ['red', 'green', 'blue'] as type, idx}
 				<div class={type === 'blue' ? '' : 'mr-4'}>
 					<label for="{type}-input">{capitalize(type)}:</label>
 					<Range
@@ -144,7 +143,7 @@
 						dataType={type}
 						class="hidden sm:block mt-4"
 						onChange={setRgbItem}
-						value={type == 'red' ? red : type == 'green' ? green : blue}
+						value={[red, green, blue][idx]}
 					/>
 					<input
 						id="{type}-input"
@@ -152,12 +151,13 @@
 						data-type={type}
 						type="number"
 						on:change={setRgbItem}
-						value={type == 'red' ? red : type == 'green' ? green : blue}
+						value={[red, green, blue][idx]}
 					/>
 				</div>
 			{/each}
 		</div>
 	</div>
+
 	<div class="colormode">
 		<input type="text" class="w-full" on:change={readColorString} value={hslString} />
 		<input type="text" class="w-full" on:change={readColorString} value={hwbString} />
