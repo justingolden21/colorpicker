@@ -2,17 +2,18 @@
 	import { session } from '$app/stores';
 	import { onMount } from 'svelte';
 	import 'dino-color-picker';
+	import { settings } from '../components/settings';
 	import Icon from '../components/Icon.svelte';
 	import CopyableInput from '../components/CopyableInput.svelte';
 
 	import w3color from '../js/lib/w3color';
 
-	let color = '#000000';
+	let color = $settings.color || '#000000';
 
 	let pickerOpen = true;
 
 	$: if (color) {
-		console.log(color);
+		$settings.color = color;
 	}
 
 	// updates when `color` updates
