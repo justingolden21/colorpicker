@@ -34,7 +34,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"dino-color-picker": "^0.2.3",
+		"dino-color-picker": "0.2.1",
 		"lodash.merge": "^4.6.2"
 	}
 }
