@@ -172,7 +172,6 @@
 
 <style lang="postcss">
 	/* .colormode {
-		/* @apply surface; */
-	/*	@apply border-2  border-gray-200 p-2 rounded;
-	}*/
+		@apply surface;
+	} */
 </style>
