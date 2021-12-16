@@ -118,7 +118,7 @@
 </div>
 
 <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
-	<div class="surface">
+	<div class="colormode">
 		<h3 class="text-center">RGB</h3>
 
 		<div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
@@ -151,28 +151,28 @@
 			{/each}
 		</div>
 	</div>
-	<div class="surface">
+	<div class="colormode">
 		<input class="surface w-full h-8" type="text" on:change={readColorString} value={hslString} />
 		<input class="surface w-full h-8" type="text" on:change={readColorString} value={hwbString} />
 		<input class="surface w-full h-8" type="text" on:change={readColorString} value={cmykString} />
 	</div>
-	<div class="surface">hi</div>
-	<div class="surface">hi</div>
+	<div class="colormode">hi</div>
+	<div class="colormode">hi</div>
 </div>
 <div class="grid grid-cols-3 fixed bottom-0 w-full  my-4 -mx-8">
-	<button class="surface rounded-full w-12 h-12 mx-auto">
+	<button class="btn rounded-full w-12 h-12 mx-auto">
 		<Icon name="heart" class="inline w-4 h-4" />
 	</button>
-	<button class="surface rounded-full w-12 h-12 mx-auto">
+	<button class="btn rounded-full w-12 h-12 mx-auto">
 		<Icon name="history" class="inline w-4 h-4" />
 	</button>
-	<button class="surface rounded-full w-12 h-12 mx-auto">
+	<button class="btn rounded-full w-12 h-12 mx-auto">
 		<Icon name="saved" class="inline w-4 h-4" />
 	</button>
 </div>
 
 <style lang="postcss">
-	/* .colormode {
-		@apply surface;
-	} */
+	.colormode {
+		@apply surface p-4;
+	}
 </style>
