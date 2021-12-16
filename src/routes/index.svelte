@@ -96,8 +96,8 @@
 			<div class="absolute top-20">
 				<dino-color-picker
 					class="surface shadow-none bg-white block transition-opacity {pickerOpen
-						? 'opacity-100'
-						: 'opacity-0'}"
+						? 'opacity-100 visible'
+						: 'opacity-0 hidden'}"
 					on:change={(event) => {
 						color = event.target.value;
 						document.getElementById('auto-detect-input').value = '';
