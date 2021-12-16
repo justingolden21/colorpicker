@@ -5,6 +5,7 @@
 	import { settings } from '../components/settings';
 	import Icon from '../components/Icon.svelte';
 	import CopyableInput from '../components/CopyableInput.svelte';
+	import Range from '../components/Range.svelte';
 
 	import w3color from '../js/lib/w3color';
 
@@ -83,7 +84,7 @@
 			on:focus={(evt) => evt.target.select()}
 		/>
 		<button
-			class="w-16 h-16 rounded ml-4"
+			class="w-12 h-12 rounded ml-4"
 			style="background: {color}"
 			on:click|self={() => {
 				pickerOpen = !pickerOpen;
@@ -130,13 +131,12 @@
 			{#each ['red', 'green', 'blue'] as type}
 				<div>
 					<label for="{type}-input">{capitalize(type)}:</label>
-					<input
+					<Range
 						min="0"
 						max="255"
-						data-type={type}
-						class="hidden sm:block"
-						type="range"
-						on:change={setRgbItem}
+						dataType={type}
+						class="hidden sm:block my-4"
+						onChange={setRgbItem}
 						value={type == 'red' ? red : type == 'green' ? green : blue}
 					/>
 					<input
