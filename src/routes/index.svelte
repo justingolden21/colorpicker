@@ -1,7 +1,7 @@
 <script>
 	import { session } from '$app/stores';
 	import { onMount } from 'svelte';
-	import 'dino-color-picker';
+	// import 'dino-color-picker';
 	import { settings } from '../components/settings';
 	import Icon from '../components/Icon.svelte';
 	import CopyableInput from '../components/CopyableInput.svelte';
@@ -32,7 +32,10 @@
 
 	let colorPicker;
 
-	onMount(() => {
+	onMount(async () => {
+		// https://kit.svelte.dev/faq
+		await import('dino-color-picker');
+
 		colorPicker = document.querySelector('dino-color-picker');
 		colorPicker.value = color;
 	});
