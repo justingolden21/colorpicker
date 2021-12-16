@@ -6,6 +6,7 @@
 	import Icon from '../components/Icon.svelte';
 	import CopyableInput from '../components/CopyableInput.svelte';
 	import Range from '../components/Range.svelte';
+	import { clickOutside } from '../components/clickOutside';
 
 	import w3color from '../js/lib/w3color';
 
@@ -89,10 +90,14 @@
 			on:click|self={() => {
 				pickerOpen = !pickerOpen;
 			}}
+			use:clickOutside
+			on:click_outside={() => (pickerOpen = false)}
 		>
 			<div class="absolute top-20">
 				<dino-color-picker
-					class="surface shadow-none bg-white {pickerOpen ? 'block' : 'hidden'}"
+					class="surface shadow-none bg-white block transition-opacity {pickerOpen
+						? 'opacity-100'
+						: 'opacity-0'}"
 					on:change={(event) => {
 						color = event.target.value;
 						document.getElementById('auto-detect-input').value = '';
