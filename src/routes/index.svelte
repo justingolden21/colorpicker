@@ -128,11 +128,11 @@
 
 <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
 	<div class="colormode">
-		<h3 class="text-center">RGB</h3>
+		<h3 class="text-center mb-4">RGB</h3>
 
-		<div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-			<CopyableInput value={rgbString} onChange={readColorString} />
-			<CopyableInput value={hexString} onChange={readColorString} />
+		<div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-4">
+			<CopyableInput class="mr-1" value={rgbString} onChange={readColorString} />
+			<CopyableInput class="ml-1" value={hexString} onChange={readColorString} />
 		</div>
 
 		<div class="grid grid-cols-3 gap-2">
@@ -150,7 +150,7 @@
 					<input
 						id="{type}-input"
 						data-type={type}
-						class="surface w-full h-8"
+						class="surface w-full h-10"
 						type="number"
 						on:change={setRgbItem}
 						value={type == 'red' ? red : type == 'green' ? green : blue}
@@ -160,9 +160,9 @@
 		</div>
 	</div>
 	<div class="colormode">
-		<input class="surface w-full h-8" type="text" on:change={readColorString} value={hslString} />
-		<input class="surface w-full h-8" type="text" on:change={readColorString} value={hwbString} />
-		<input class="surface w-full h-8" type="text" on:change={readColorString} value={cmykString} />
+		<input class="surface w-full h-10" type="text" on:change={readColorString} value={hslString} />
+		<input class="surface w-full h-10" type="text" on:change={readColorString} value={hwbString} />
+		<input class="surface w-full h-10" type="text" on:change={readColorString} value={cmykString} />
 	</div>
 	<div class="colormode">hi</div>
 	<div class="colormode">hi</div>
