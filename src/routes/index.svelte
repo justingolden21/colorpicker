@@ -73,7 +73,7 @@
 <svelte:window on:keydown={handleKeydown} />
 
 <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
-	<div class="relative z-10">
+	<div>
 		<input
 			id="auto-detect-input"
 			class="w-48"
@@ -84,7 +84,7 @@
 			on:focus={(evt) => evt.target.select()}
 		/>
 		<button
-			class="w-12 h-12 rounded ml-4"
+			class="relative w-16 h-16 rounded ml-4 z-10"
 			style="background: {color}"
 			on:click|self={() => {
 				pickerOpen = !pickerOpen;
