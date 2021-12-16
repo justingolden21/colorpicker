@@ -31,7 +31,7 @@
 				}
 			);
 		}}
-		class="btn bg-white absolute inset-y-0 right-0 flex items-center"
+		class="btn absolute inset-y-0 right-0 flex items-center"
 	>
 		<Icon name="copy" class="w-6 h-6" />
 	</button>
