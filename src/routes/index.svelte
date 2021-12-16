@@ -111,11 +111,14 @@
 			<Icon name="link" class="inline w-4 h-4" />
 			Link
 		</button>
-		<button class="btn mr-2 mb-2">
+		<button class="btn mr-2 mb-2" on:click={() => (color = '#000000')}>
 			<Icon name="reset" class="inline w-4 h-4" />
 			Reset
 		</button>
-		<button class="btn mr-2 mb-2">
+		<button
+			class="btn mr-2 mb-2"
+			on:click={() => (color = '#' + ((Math.random() * 0xffffff) << 0).toString(16))}
+		>
 			<Icon name="random" class="inline w-4 h-4" />
 			Random
 		</button>
