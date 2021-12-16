@@ -82,13 +82,13 @@
 			on:focus={(evt) => evt.target.select()}
 		/>
 		<button
-			class="w-16 h-16 rounded"
+			class="w-16 h-16 rounded ml-4"
 			style="background: {color}"
 			on:click|self={() => {
 				pickerOpen = !pickerOpen;
 			}}
 		>
-			<div class="absolute top-16">
+			<div class="absolute top-20">
 				<dino-color-picker
 					class="surface shadow-none bg-white {pickerOpen ? 'block' : 'hidden'}"
 					on:change={(event) => {
