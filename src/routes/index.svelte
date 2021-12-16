@@ -166,13 +166,13 @@
 </div>
 <div class="grid grid-cols-3 fixed bottom-0 w-full  my-4 -mx-8">
 	<button class="btn rounded-full w-12 h-12 mx-auto">
-		<Icon name="heart" class="inline w-4 h-4" />
+		<Icon name="saved" class="inline w-4 h-4" />
 	</button>
 	<button class="btn rounded-full w-12 h-12 mx-auto">
 		<Icon name="history" class="inline w-4 h-4" />
 	</button>
 	<button class="btn rounded-full w-12 h-12 mx-auto">
-		<Icon name="saved" class="inline w-4 h-4" />
+		<Icon name="heart" class="inline w-4 h-4" />
 	</button>
 </div>
 
