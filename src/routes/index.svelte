@@ -136,7 +136,7 @@
 
 		<div class="grid grid-cols-3 gap-2">
 			{#each ['red', 'green', 'blue'] as type}
-				<div>
+				<div class={type === 'blue' ? '' : 'mr-4'}>
 					<label for="{type}-input">{capitalize(type)}:</label>
 					<Range
 						min="0"
