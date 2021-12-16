@@ -1,7 +1,6 @@
 <script>
 	import { session } from '$app/stores';
 	import { onMount } from 'svelte';
-	// import 'dino-color-picker';
 	import { settings } from '../components/settings';
 	import Icon from '../components/Icon.svelte';
 	import CopyableInput from '../components/CopyableInput.svelte';
