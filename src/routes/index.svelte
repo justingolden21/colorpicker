@@ -79,9 +79,9 @@
 	<div class="relative z-10">
 		<input
 			id="auto-detect-input"
+			class="w-48"
 			autofocus
 			type="text"
-			class="surface"
 			placeholder={$session.languageDictionary.messages['Type a color...']}
 			on:change={readColorString}
 			on:focus={(evt) => evt.target.select()}
@@ -148,8 +148,8 @@
 					/>
 					<input
 						id="{type}-input"
+						class="w-full"
 						data-type={type}
-						class="surface w-full h-10"
 						type="number"
 						on:change={setRgbItem}
 						value={type == 'red' ? red : type == 'green' ? green : blue}
@@ -159,9 +159,9 @@
 		</div>
 	</div>
 	<div class="colormode">
-		<input class="surface w-full h-10" type="text" on:change={readColorString} value={hslString} />
-		<input class="surface w-full h-10" type="text" on:change={readColorString} value={hwbString} />
-		<input class="surface w-full h-10" type="text" on:change={readColorString} value={cmykString} />
+		<input type="text" class="w-full" on:change={readColorString} value={hslString} />
+		<input type="text" class="w-full" on:change={readColorString} value={hwbString} />
+		<input type="text" class="w-full" on:change={readColorString} value={cmykString} />
 	</div>
 	<div class="colormode">hi</div>
 	<div class="colormode">hi</div>
@@ -181,5 +181,9 @@
 <style lang="postcss">
 	.colormode {
 		@apply surface p-4;
+	}
+	input[type='text'],
+	input[type='number'] {
+		@apply surface h-10;
 	}
 </style>
