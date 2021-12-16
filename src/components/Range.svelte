@@ -16,14 +16,14 @@
 
 <style lang="postcss">
 	.slider {
-		@apply appearance-none w-full h-2 rounded-full bg-gray-200 opacity-75 transition-opacity hover:opacity-100;
+		@apply appearance-none w-full h-2 rounded-full borders opacity-75 transition-opacity hover:opacity-100;
 	}
 
 	.slider::-webkit-slider-thumb {
-		@apply appearance-none w-5 h-5 rounded-full bg-gray-400 cursor-pointer;
+		@apply appearance-none w-5 h-5 rounded-full bg-gray-900 cursor-pointer;
 	}
 
 	.slider::-moz-range-thumb {
-		@apply appearance-none w-5 h-5 rounded-full bg-gray-400 cursor-pointer;
+		@apply appearance-none w-5 h-5 rounded-full bg-gray-900 cursor-pointer;
 	}
 </style>
