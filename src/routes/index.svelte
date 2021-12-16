@@ -142,13 +142,13 @@
 						min="0"
 						max="255"
 						dataType={type}
-						class="hidden sm:block my-4"
+						class="hidden sm:block mt-4"
 						onChange={setRgbItem}
 						value={type == 'red' ? red : type == 'green' ? green : blue}
 					/>
 					<input
 						id="{type}-input"
-						class="w-full"
+						class="w-full mt-2 sm:mt-4"
 						data-type={type}
 						type="number"
 						on:change={setRgbItem}
@@ -166,7 +166,7 @@
 	<div class="colormode">hi</div>
 	<div class="colormode">hi</div>
 </div>
-<div class="grid grid-cols-3 fixed bottom-0 w-full  my-4 -mx-8">
+<div class="grid grid-cols-3 fixed bottom-0 w-full my-4 -mx-8">
 	<button class="btn rounded-full w-12 h-12 mx-auto">
 		<Icon name="saved" class="inline w-4 h-4" />
 	</button>
