@@ -20,14 +20,25 @@
 
 	// updates when `color` updates
 	$: rgbString = w3color(color).toRgbString();
+	$: cmykString = w3color(color).toCmykString();
 	$: hslString = w3color(color).toHslString();
 	$: hwbString = w3color(color).toHwbString();
-	$: cmykString = w3color(color).toCmykString();
 	$: hexString = color;
 
 	$: red = w3color(color).red;
 	$: green = w3color(color).green;
 	$: blue = w3color(color).blue;
+
+	$: cyan = Math.round(w3color(color).cyan * 100);
+	$: magenta = Math.round(w3color(color).magenta * 100);
+	$: yellow = Math.round(w3color(color).yellow * 100);
+	$: key = Math.round(w3color(color).black * 100);
+
+	$: hue = w3color(color).hue;
+	$: sat = w3color(color).sat;
+	$: lightness = w3color(color).lightness;
+	$: whiteness = w3color(color).whiteness;
+	$: blackness = w3color(color).blackness;
 
 	onMount(async () => {
 		// https://kit.svelte.dev/faq
