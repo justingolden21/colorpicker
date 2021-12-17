@@ -175,16 +175,14 @@
 	{#each ['RGB', 'CMYK', 'HSL', 'HWB'] as colormode, idx}
 		<div class="colormode">
 			<h3 class="text-center mb-4">{colormode}</h3>
-			<div class="{colormode === 'RGB' ? 'grid grid-cols-1 sm:grid-cols-2 gap-2' : ''} mb-4">
-				<CopyableInput
-					class="mr-1"
-					value={[rgbString, cmykString, hslString, hwbString][idx]}
-					onChange={readColorString}
-				/>
-				{#if colormode === 'RGB'}
-					<CopyableInput class="ml-1" value={hexString} onChange={readColorString} />
-				{/if}
-			</div>
+			<CopyableInput
+				class="mb-4"
+				value={[rgbString, cmykString, hslString, hwbString][idx]}
+				onChange={readColorString}
+			/>
+			{#if colormode === 'RGB'}
+				<CopyableInput class="mb-4" value={hexString} onChange={readColorString} />
+			{/if}
 			<div class="grid {colormode === 'CMYK' ? 'grid-cols-2' : 'grid-cols-3'} gap-2">
 				{#each [['red', 'green', 'blue'], ['cyan', 'magenta', 'yellow', 'key'], ['hue', 'saturation', 'lightness'], ['hue', 'whiteness', 'blackness']][idx] as type, idx2}
 					<div class={idx === 0 ? 'ml-4' : ''}>
