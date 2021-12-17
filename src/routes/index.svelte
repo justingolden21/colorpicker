@@ -35,10 +35,10 @@
 	$: key = Math.round(w3color(color).black * 100);
 
 	$: hue = w3color(color).hue;
-	$: sat = w3color(color).sat;
-	$: lightness = w3color(color).lightness;
-	$: whiteness = w3color(color).whiteness;
-	$: blackness = w3color(color).blackness;
+	$: saturation = Math.round(w3color(color).sat * 100);
+	$: lightness = Math.round(w3color(color).lightness * 100);
+	$: whiteness = Math.round(w3color(color).whiteness * 100);
+	$: blackness = Math.round(w3color(color).blackness * 100);
 
 	onMount(async () => {
 		// https://kit.svelte.dev/faq
@@ -62,6 +62,14 @@
 
 	const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
 
+	// TODO
+	const setColorItem = (str) => {
+		const c = w3color(str);
+		if (!c.valid) return;
+		color = c.toHexString();
+		colorPicker.value = color;
+	};
+
 	const setRgbItem = (evt) => {
 		const str = evt.target.value;
 		const type = evt.target.dataset.type;
@@ -70,10 +78,7 @@
 			type === 'green' ? parseInt(str) : w3color(color).green,
 			type === 'blue' ? parseInt(str) : w3color(color).blue
 		];
-		const c = w3color('rgb(' + rgb.join(', ') + ')');
-		if (!c.valid) return;
-		color = c.toHexString();
-		colorPicker.value = color;
+		setColorItem('rgb(' + rgb.join(', ') + ')');
 	};
 
 	const setCmykItem = (evt) => {
@@ -85,12 +90,11 @@
 			type === 'yellow' ? parseInt(str) : w3color(color).yellow,
 			type === 'key' ? parseInt(str) : w3color(color).black
 		];
-		console.log('cmyk(' + cmyk.join('%, ') + ')');
-		const c = w3color('cmyk(' + cmyk.join('%, ') + '%)');
-		if (!c.valid) return;
-		color = c.toHexString();
-		colorPicker.value = color;
+		setColorItem('cmyk(' + cmyk.join('%, ') + '%)');
 	};
+
+	const setHslItem = () => {};
+	const setHwbItem = () => {};
 </script>
 
 <svelte:head>
@@ -98,7 +102,6 @@
 </svelte:head>
 
 <svelte:window on:keydown={handleKeydown} />
-
 <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
 	<div class="flex items-start">
 		<input
@@ -159,13 +162,13 @@
 </div>
 
 <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
-	{#each ['RGB', 'CMYK'] as colormode, idx}
+	{#each ['RGB', 'CMYK', 'HSL', 'HWB'] as colormode, idx}
 		<div class="colormode">
 			<h3 class="text-center mb-4">{colormode}</h3>
 			<div class="{colormode === 'RGB' ? 'grid grid-cols-1 sm:grid-cols-2 gap-2' : ''} mb-4">
 				<CopyableInput
 					class="mr-1"
-					value={[rgbString, cmykString][idx]}
+					value={[rgbString, cmykString, hslString, hwbString][idx]}
 					onChange={readColorString}
 				/>
 				{#if colormode === 'RGB'}
@@ -173,42 +176,52 @@
 				{/if}
 			</div>
 			<div class="grid {colormode === 'CMYK' ? 'grid-cols-2' : 'grid-cols-3'} gap-2">
-				{#each colormode === 'RGB' ? ['red', 'green', 'blue'] : ['cyan', 'magenta', 'yellow', 'key'] as type, idx}
+				{#each [['red', 'green', 'blue'], ['cyan', 'magenta', 'yellow', 'key'], ['hue', 'saturation', 'lightness'], ['hue', 'whiteness', 'blackness']][idx] as type, idx2}
 					<div class={idx === 0 ? 'ml-4' : ''}>
 						<label for="{type}-input">{capitalize(type)}:</label>
 						<Range
-							min="0"
-							max={colormode === 'RGB' ? '255' : '100'}
-							dataType={type}
 							class="hidden sm:block mt-4"
-							onChange={colormode === 'RGB' ? setRgbItem : setCmykItem}
-							value={colormode === 'RGB'
-								? [red, green, blue][idx]
-								: [cyan, magenta, yellow, key][idx]}
+							min="0"
+							max={[
+								['255', '255', '255'],
+								['100', '100', '100', '100'],
+								['360', '100', '100'],
+								['360', '100', '100']
+							][idx][idx2]}
+							dataType={type}
+							onChange={[setRgbItem, setCmykItem, setHslItem, setHwbItem][idx]}
+							value={[
+								[red, green, blue],
+								[cyan, magenta, yellow, key],
+								[hue, saturation, lightness],
+								[hue, whiteness, blackness]
+							][idx][idx2]}
 						/>
 						<input
 							id="{type}-input"
 							class="w-full mt-2 sm:mt-4"
-							data-type={type}
 							type="number"
-							on:change={colormode === 'RGB' ? setRgbItem : setCmykItem}
-							value={colormode === 'RGB'
-								? [red, green, blue][idx]
-								: [cyan, magenta, yellow, key][idx]}
+							min="0"
+							max={[
+								['255', '255', '255'],
+								['100', '100', '100', '100'],
+								['360', '100', '100'],
+								['360', '100', '100']
+							][idx][idx2]}
+							data-type={type}
+							on:change={[setRgbItem, setCmykItem, setHslItem, setHwbItem][idx]}
+							value={[
+								[red, green, blue],
+								[cyan, magenta, yellow, key],
+								[hue, saturation, lightness],
+								[hue, whiteness, blackness]
+							][idx][idx2]}
 						/>
 					</div>
 				{/each}
 			</div>
 		</div>
 	{/each}
-
-	<div class="colormode">
-		<input type="text" class="w-full" on:change={readColorString} value={hslString} />
-		<input type="text" class="w-full" on:change={readColorString} value={hwbString} />
-		<input type="text" class="w-full" on:change={readColorString} value={cmykString} />
-	</div>
-	<div class="colormode">hi</div>
-	<div class="colormode">hi</div>
 </div>
 <div class="grid grid-cols-3 fixed bottom-0 w-full my-4 -mx-8">
 	<button class="btn rounded-full w-12 h-12 mx-auto">

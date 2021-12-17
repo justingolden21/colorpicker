@@ -11,5 +11,8 @@ quick copy for css color, background, background-color, border-color (dropdown f
 future components:
 range inputs, toast for copy, slider for mobile
 
+
+preview modal with text and other samples, shapes
+
 maybe:
 info btn next to input that shows examples of what you can type
