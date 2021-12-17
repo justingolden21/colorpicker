@@ -94,6 +94,11 @@
 			on:change={readColorString}
 			on:focus={(evt) => evt.target.select()}
 		/>
+
+		<!-- style="background:url('img/icons/icon{w3color(color).isDark()
+            ? '-white'
+            : ''}.svg'); background-color: {color};" -->
+
 		<button
 			class="btn relative w-10 h-10 rounded ml-4 z-10"
 			style="background-color: {color}"
