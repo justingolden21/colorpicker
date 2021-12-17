@@ -70,7 +70,23 @@
 			type === 'green' ? parseInt(str) : w3color(color).green,
 			type === 'blue' ? parseInt(str) : w3color(color).blue
 		];
-		const c = w3color('rgb(' + rgb[0] + ', ' + rgb[1] + ', ' + rgb[2] + ')');
+		const c = w3color('rgb(' + rgb.join(', ') + ')');
+		if (!c.valid) return;
+		color = c.toHexString();
+		colorPicker.value = color;
+	};
+
+	const setCmykItem = (evt) => {
+		const str = evt.target.value;
+		const type = evt.target.dataset.type;
+		const cmyk = [
+			type === 'cyan' ? parseInt(str) : w3color(color).cyan,
+			type === 'magenta' ? parseInt(str) : w3color(color).magenta,
+			type === 'yellow' ? parseInt(str) : w3color(color).yellow,
+			type === 'key' ? parseInt(str) : w3color(color).black
+		];
+		console.log('cmyk(' + cmyk.join('%, ') + ')');
+		const c = w3color('cmyk(' + cmyk.join('%, ') + '%)');
 		if (!c.valid) return;
 		color = c.toHexString();
 		colorPicker.value = color;
@@ -143,37 +159,48 @@
 </div>
 
 <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
-	<!-- RGB -->
-	<div class="colormode">
-		<h3 class="text-center mb-4">RGB</h3>
-		<div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-4">
-			<CopyableInput class="mr-1" value={rgbString} onChange={readColorString} />
-			<CopyableInput class="ml-1" value={hexString} onChange={readColorString} />
+	{#each ['RGB', 'CMYK'] as colormode, idx}
+		<div class="colormode">
+			<h3 class="text-center mb-4">{colormode}</h3>
+			<div class="{colormode === 'RGB' ? 'grid grid-cols-1 sm:grid-cols-2 gap-2' : ''} mb-4">
+				<CopyableInput
+					class="mr-1"
+					value={[rgbString, cmykString][idx]}
+					onChange={readColorString}
+				/>
+				{#if colormode === 'RGB'}
+					<CopyableInput class="ml-1" value={hexString} onChange={readColorString} />
+				{/if}
+			</div>
+			<div class="grid {colormode === 'CMYK' ? 'grid-cols-2' : 'grid-cols-3'} gap-2">
+				{#each colormode === 'RGB' ? ['red', 'green', 'blue'] : ['cyan', 'magenta', 'yellow', 'key'] as type, idx}
+					<div class={idx === 0 ? 'ml-4' : ''}>
+						<label for="{type}-input">{capitalize(type)}:</label>
+						<Range
+							min="0"
+							max={colormode === 'RGB' ? '255' : '100'}
+							dataType={type}
+							class="hidden sm:block mt-4"
+							onChange={colormode === 'RGB' ? setRgbItem : setCmykItem}
+							value={colormode === 'RGB'
+								? [red, green, blue][idx]
+								: [cyan, magenta, yellow, key][idx]}
+						/>
+						<input
+							id="{type}-input"
+							class="w-full mt-2 sm:mt-4"
+							data-type={type}
+							type="number"
+							on:change={colormode === 'RGB' ? setRgbItem : setCmykItem}
+							value={colormode === 'RGB'
+								? [red, green, blue][idx]
+								: [cyan, magenta, yellow, key][idx]}
+						/>
+					</div>
+				{/each}
+			</div>
 		</div>
-		<div class="grid grid-cols-3 gap-2">
-			{#each ['red', 'green', 'blue'] as type, idx}
-				<div class={type === 'blue' ? '' : 'mr-4'}>
-					<label for="{type}-input">{capitalize(type)}:</label>
-					<Range
-						min="0"
-						max="255"
-						dataType={type}
-						class="hidden sm:block mt-4"
-						onChange={setRgbItem}
-						value={[red, green, blue][idx]}
-					/>
-					<input
-						id="{type}-input"
-						class="w-full mt-2 sm:mt-4"
-						data-type={type}
-						type="number"
-						on:change={setRgbItem}
-						value={[red, green, blue][idx]}
-					/>
-				</div>
-			{/each}
-		</div>
-	</div>
+	{/each}
 
 	<div class="colormode">
 		<input type="text" class="w-full" on:change={readColorString} value={hslString} />
