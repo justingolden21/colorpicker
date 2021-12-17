@@ -64,6 +64,7 @@
 
 	// TODO
 	const setColorItem = (str) => {
+		console.log(str);
 		const c = w3color(str);
 		if (!c.valid) return;
 		color = c.toHexString();
@@ -71,30 +72,39 @@
 	};
 
 	const setRgbItem = (evt) => {
-		const str = evt.target.value;
+		const val = parseInt(evt.target.value);
 		const type = evt.target.dataset.type;
 		const rgb = [
-			type === 'red' ? parseInt(str) : w3color(color).red,
-			type === 'green' ? parseInt(str) : w3color(color).green,
-			type === 'blue' ? parseInt(str) : w3color(color).blue
+			type === 'red' ? val : red,
+			type === 'green' ? val : green,
+			type === 'blue' ? val : blue
 		];
 		setColorItem('rgb(' + rgb.join(', ') + ')');
 	};
 
 	const setCmykItem = (evt) => {
-		const str = evt.target.value;
+		const val = parseInt(evt.target.value);
 		const type = evt.target.dataset.type;
 		const cmyk = [
-			type === 'cyan' ? parseInt(str) : w3color(color).cyan,
-			type === 'magenta' ? parseInt(str) : w3color(color).magenta,
-			type === 'yellow' ? parseInt(str) : w3color(color).yellow,
-			type === 'key' ? parseInt(str) : w3color(color).black
+			type === 'cyan' ? val : cyan,
+			type === 'magenta' ? val : magenta,
+			type === 'yellow' ? val : yellow,
+			type === 'key' ? val : key
 		];
 		setColorItem('cmyk(' + cmyk.join('%, ') + '%)');
 	};
 
-	const setHslItem = () => {};
-	const setHwbItem = () => {};
+	const setHslItem = (evt) => {
+		const val = parseInt(evt.target.value);
+		const type = evt.target.dataset.type;
+		const hsl = [
+			type === 'hue' ? val : hue,
+			type === 'saturation' ? val : saturation,
+			type === 'lightness' ? val : lightness
+		];
+		setColorItem('cmyk(' + hsl[0] + ', ' + hsl[1] + '%, ' + hsl[2] + '%)');
+	};
+	const setHwbItem = (evt) => {};
 </script>
 
 <svelte:head>
