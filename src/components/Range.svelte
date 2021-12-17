@@ -16,7 +16,7 @@
 
 <style lang="postcss">
 	.slider {
-		@apply appearance-none w-full h-2 rounded-full borders opacity-75 transition-opacity hover:opacity-100;
+		@apply appearance-none w-full h-2 rounded-full borders;
 	}
 
 	/* bad UX to possibly make slider thumb white? unable to add border to thumb... */
