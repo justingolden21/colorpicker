@@ -16,7 +16,10 @@
 
 	$: if (color) {
 		$settings.color = color;
+		if (setColorProperty) setColorProperty(color);
 	}
+
+	let setColorProperty;
 
 	// updates when `color` updates
 	$: rgbString = w3color(color).toRgbString();
@@ -46,6 +49,9 @@
 
 		colorPicker = document.querySelector('dino-color-picker');
 		colorPicker.value = color;
+
+		setColorProperty = (color) =>
+			document.documentElement.style.setProperty('--current-color', color);
 	});
 
 	const readColorString = (evt) => {

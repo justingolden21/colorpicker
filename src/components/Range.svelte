@@ -20,10 +20,12 @@
 	}
 
 	.slider::-webkit-slider-thumb {
-		@apply appearance-none w-5 h-5 rounded-full bg-gray-900 cursor-pointer;
+		@apply appearance-none w-5 h-5 rounded-full cursor-pointer;
+		background-color: var(--current-color);
 	}
 
 	.slider::-moz-range-thumb {
-		@apply appearance-none w-5 h-5 rounded-full bg-gray-900 cursor-pointer;
+		@apply appearance-none w-5 h-5 rounded-full cursor-pointer;
+		background-color: var(--current-color);
 	}
 </style>
