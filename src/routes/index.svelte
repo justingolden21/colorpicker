@@ -168,7 +168,11 @@
 		<button
 			class="btn mr-2 mb-2"
 			on:click={() =>
-				(color = '#' + Math.floor(Math.random() * 0xffffff).toString(16)).padStart(6, '0')}
+				(color =
+					'#' +
+					Math.floor(Math.random() * 0xffffff)
+						.toString(16)
+						.padStart(6, '0'))}
 		>
 			<Icon name="random" class="inline w-4 h-4" />
 			Random
