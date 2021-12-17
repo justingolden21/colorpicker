@@ -8,6 +8,8 @@
 	<meta name="description" content={$session.languageDictionary['appDescription']} />
 	<meta name="keywords" content={$session.languageDictionary['appKeywords']} />
 
+	<!-- TODO: replace app URL -->
+
 	<meta property="og:image:height" content="292" />
 	<meta property="og:image:width" content="558" />
 	<meta property="og:description" content={$session.languageDictionary['appDescription']} />
