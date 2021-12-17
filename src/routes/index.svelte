@@ -62,7 +62,6 @@
 
 	const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
 
-	// TODO
 	const setColorItem = (str) => {
 		console.log(str);
 		const c = w3color(str);
@@ -129,8 +128,8 @@
             : ''}.svg'); background-color: {color};" -->
 
 		<button
-			class="btn relative w-10 h-10 rounded ml-4 z-10"
-			style="background-color: {color}"
+			class="btn relative w-10 h-10 rounded ml-4 z-10 hover:border-gray-900"
+			style="background-color: {color};"
 			on:click|self={() => {
 				pickerOpen = !pickerOpen;
 			}}
@@ -139,7 +138,7 @@
 		>
 			<div class="absolute top-16">
 				<dino-color-picker
-					class="surface shadow-none bg-white block transition-opacity {pickerOpen
+					class="surface bg-white block transition-opacity {pickerOpen
 						? 'opacity-100 visible'
 						: 'opacity-0 hidden'}"
 					on:change={(event) => {
