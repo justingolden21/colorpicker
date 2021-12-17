@@ -69,7 +69,6 @@
 	const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
 
 	const setColorItem = (str) => {
-		console.log(str);
 		const c = w3color(str);
 		if (!c.valid) return;
 		color = c.toHexString();
@@ -107,9 +106,18 @@
 			type === 'saturation' ? val : saturation,
 			type === 'lightness' ? val : lightness
 		];
-		setColorItem('cmyk(' + hsl[0] + ', ' + hsl[1] + '%, ' + hsl[2] + '%)');
+		setColorItem(`hsl(${hsl[0]}, ${hsl[1]}%, ${hsl[2]}%)`);
 	};
-	const setHwbItem = (evt) => {};
+	const setHwbItem = (evt) => {
+		const val = parseInt(evt.target.value);
+		const type = evt.target.dataset.type;
+		const hwb = [
+			type === 'hue' ? val : hue,
+			type === 'whiteness' ? val : whiteness,
+			type === 'blackness' ? val : blackness
+		];
+		setColorItem(`hwb(${hwb[0]}, ${hwb[1]}%, ${hwb[2]}%)`);
+	};
 </script>
 
 <svelte:head>
@@ -117,6 +125,7 @@
 </svelte:head>
 
 <svelte:window on:keydown={handleKeydown} />
+
 <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
 	<div class="flex items-start">
 		<input
