@@ -84,7 +84,7 @@
 <svelte:window on:keydown={handleKeydown} />
 
 <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
-	<div>
+	<div class="flex items-start">
 		<input
 			id="auto-detect-input"
 			class="w-48"
@@ -95,15 +95,15 @@
 			on:focus={(evt) => evt.target.select()}
 		/>
 		<button
-			class="relative w-16 h-16 rounded ml-4 z-10"
-			style="background: {color}"
+			class="btn relative w-10 h-10 rounded ml-4 z-10"
+			style="background-color: {color}"
 			on:click|self={() => {
 				pickerOpen = !pickerOpen;
 			}}
 			use:clickOutside
 			on:click_outside={() => (pickerOpen = false)}
 		>
-			<div class="absolute top-20">
+			<div class="absolute top-16">
 				<dino-color-picker
 					class="surface shadow-none bg-white block transition-opacity {pickerOpen
 						? 'opacity-100 visible'
