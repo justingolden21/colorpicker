@@ -10,6 +10,8 @@ quick copy for css color, background, background-color, border-color (dropdown f
 three digit hex / four digit hex
 info on color modes
 
+info btn with contact. fullscreen btn? fullscreen preview color?
+
 future components:
 range inputs, toast for copy, slider for mobile
 
