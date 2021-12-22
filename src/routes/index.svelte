@@ -141,7 +141,7 @@
             : ''}.svg'); background-color: {color};" -->
 
 		<button
-			class="btn relative w-10 h-10 rounded ml-4 z-10 hover:border-gray-900"
+			class="btn relative w-10 h-10 rounded ml-4 z-10 hover:border-gray-400"
 			style="background-color: {color};"
 			on:click|self={() => {
 				pickerOpen = !pickerOpen;
