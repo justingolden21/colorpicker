@@ -36,6 +36,14 @@
 		{
 			name: 'saved',
 			path: `M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z`
+		},
+		{
+			name: 'success',
+			path: `M5 13l4 4L19 7`
+		},
+		{
+			name: 'info',
+			path: `M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z`
 		}
 	];
 

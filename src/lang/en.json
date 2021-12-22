@@ -10,5 +10,8 @@
 	},
 	"messages": {
 		"Type a color...": "Type a color..."
+	},
+	"labels": {
+		"Close": "Close"
 	}
 }

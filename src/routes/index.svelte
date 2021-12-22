@@ -9,6 +9,7 @@
 	import Icon from '../components/Icon.svelte';
 	import CopyableInput from '../components/CopyableInput.svelte';
 	import Range from '../components/Range.svelte';
+	import { Toasts, addToast } from '../components/Toast/_toast.js';
 
 	let color = $settings.color || '#000000';
 	let colorPicker;
@@ -164,7 +165,12 @@
 	</div>
 	<h1 class="text-center">{$session.languageDictionary.appName}</h1>
 	<div class="mx-auto">
-		<button class="btn mr-2 mb-2">
+		<button
+			class="btn mr-2 mb-2"
+			on:click={() => {
+				addToast({ message: 'message', type: 'info', timeout: 3000 });
+			}}
+		>
 			<Icon name="link" class="inline w-4 h-4" />
 			Link
 		</button>
@@ -258,6 +264,8 @@
 		<Icon name="heart" class="inline w-4 h-4" />
 	</button>
 </div>
+
+<Toasts />
 
 <style lang="postcss">
 	.colormode {
