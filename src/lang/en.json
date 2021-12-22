@@ -1,8 +1,8 @@
 {
-	"appName": "Color Picker",
-	"appShortName": "Color Picker",
+	"appName": "Color Convert",
+	"appShortName": "Color Convert",
 	"appDescription": "a simple but powerful color picker and converter for digital artists and web developers",
-	"appKeywords": ["color picker", "color converter"],
+	"appKeywords": ["color convert", "color picker", "color converter"],
 	"error": {
 		"The resource could not be found": "The resource could not be found",
 		"Go back to the homepage": "Go back to the homepage",
