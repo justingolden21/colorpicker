@@ -263,8 +263,4 @@
 	.colormode {
 		@apply surface p-4;
 	}
-	input[type='text'],
-	input[type='number'] {
-		@apply surface h-10;
-	}
 </style>

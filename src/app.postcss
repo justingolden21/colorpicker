@@ -14,7 +14,7 @@
 
 	*:focus,
 	button:focus {
-		@apply outline-none ring-2 ring-gray-300;
+		@apply outline-none ring-2 ring-gray-400;
 	}
 
 	h1,
@@ -30,6 +30,10 @@
 	a {
 		@apply hover:underline font-medium;
 	}
+	input[type='text'],
+	input[type='number'] {
+		@apply surface h-10;
+	}
 }
 
 @layer components {
@@ -38,6 +42,8 @@
 	}
 	.surface {
 		@apply borders p-2 rounded;
+	}
+	.surface:not(:focus) {
 		box-shadow: 2px 4px 4px #d4d4d8; /* gray-300 */
 	}
 	.btn {

@@ -11,7 +11,7 @@
 	<input
 		bind:this={input}
 		spellcheck="false"
-		class="surface w-full h-10"
+		class="w-full"
 		type="text"
 		{value}
 		on:change={onChange}
