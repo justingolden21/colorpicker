@@ -16,6 +16,7 @@
 
 	$: if (color) {
 		$settings.color = color;
+		if (colorPicker) colorPicker.value = color;
 		if (setColorProperty) setColorProperty(color);
 	}
 
@@ -48,7 +49,6 @@
 		await import('dino-color-picker');
 
 		colorPicker = document.querySelector('dino-color-picker');
-		colorPicker.value = color;
 
 		setColorProperty = (color) =>
 			document.documentElement.style.setProperty('--current-color', color);
@@ -59,7 +59,6 @@
 		const c = w3color(str);
 		if (!c.valid) return; // TODO toast saying invalid color
 		color = c.toHexString();
-		colorPicker.value = color;
 	};
 
 	function handleKeydown(event) {
@@ -72,7 +71,6 @@
 		const c = w3color(str);
 		if (!c.valid) return;
 		color = c.toHexString();
-		colorPicker.value = color;
 	};
 
 	const setRgbItem = (evt) => {
