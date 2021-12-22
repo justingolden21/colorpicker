@@ -9,9 +9,7 @@
 
 	const dispatch = createEventDispatcher();
 
-	export let type;
-	export let dismissible = true;
-	export let timeout;
+	export let type, dismissible, timeout;
 </script>
 
 <div
