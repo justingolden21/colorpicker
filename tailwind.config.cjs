@@ -15,5 +15,19 @@ module.exports = {
 	variants: {
 		extend: {}
 	},
-	plugins: []
+	plugins: [
+		function ({ addUtilities }) {
+			addUtilities({
+				'.borders': {
+					'@apply border-2 border-gray-200': {}
+				},
+				'.surface': {
+					'@apply borders p-2 rounded': {}
+				},
+				'.btn': {
+					'@apply surface bg-white hover:bg-gray-100': {}
+				}
+			});
+		}
+	]
 };
