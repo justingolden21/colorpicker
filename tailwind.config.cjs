@@ -22,10 +22,10 @@ module.exports = {
 					'@apply border-2 border-gray-200': {}
 				},
 				'.surface': {
-					'@apply borders p-2 rounded': {}
+					'@apply borders p-2 rounded bg-white': {}
 				},
 				'.btn': {
-					'@apply surface bg-white hover:bg-gray-100': {}
+					'@apply surface hover:bg-gray-100': {}
 				}
 			});
 		}

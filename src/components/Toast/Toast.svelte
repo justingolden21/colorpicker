@@ -12,14 +12,10 @@
 	export let type, dismissible, timeout;
 </script>
 
-<div
-	class="w-80 p-4 flex items-center mb-2 mx-auto border-2 border-gray-300 bg-gray-100 bg-opacity-75 backdrop-blur-sm dark:border-gray-200 dark:bg-gray-800 dark:bg-opacity-75"
-	role="alert"
-	transition:fade
->
+<div class="w-80 p-4 flex items-center mb-2 mx-auto surface" role="alert" transition:fade>
 	<Icon name={type} class="inline w-6 h-6" />
 
-	<div class="ml-4 font-bold">
+	<div class="ml-4">
 		<slot />
 	</div>
 
@@ -33,9 +29,10 @@
 		</button>
 	{/if}
 
+	<!-- TODO: progress bar not working here, works in clock though -->
 	{#if timeout}
 		<div
-			class="progress-animation absolute bottom-0 left-0 h-1 bg-gray-600 dark:bg-gray-200"
+			class="absolute bottom-0 left-0 h-1 bg-gray-600"
 			style="animation-duration: {timeout /
 				1000}s; animation-timing-function: linear; animation-name: shrink;"
 		/>
