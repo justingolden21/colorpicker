@@ -37,27 +37,25 @@
 	<div>
 		{#each items as item, idx (item.timestamp)}
 			<div class="surface grid grid-cols-2 md:grid-cols-4 gap-2">
+				<div class="col-span-2">
+					<input type="text" placeholder="Color name" bind:value={item.name} />
+				</div>
 				<div>
 					<div class="w-8 h-8 rounded" style="background-color: {item.color}" />
 					<span>{item.color}</span>
 				</div>
 				<div>
-					<p>{item.name}</p>
+					<button class="btn" on:click={() => remove(item.timestamp)}>
+						<Icon name="close" class="inline w-4 h-4" />
+					</button>
 				</div>
-				<div>
+				<div class="col-span-2">
 					<button>open</button>
 					<button>edit</button>
 					<button>move</button>
+					<button>share</button>
 					<button class="btn">
 						<Icon name="heart" class="inline w-4 h-4" />
-					</button>
-					<button class="btn">
-						<Icon name="heart" class="inline w-4 h-4" />
-					</button>
-				</div>
-				<div>
-					<button class="btn" on:click={() => remove(item.timestamp)}>
-						<Icon name="close" class="inline w-4 h-4" />
 					</button>
 				</div>
 			</div>
