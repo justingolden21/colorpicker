@@ -16,8 +16,8 @@ module.exports = {
 		extend: {}
 	},
 	plugins: [
-		function ({ addUtilities }) {
-			addUtilities({
+		function ({ addComponents }) {
+			addComponents({
 				'.borders': {
 					'@apply border-2 border-gray-200': {}
 				},
@@ -28,7 +28,7 @@ module.exports = {
 					'@apply surface hover:bg-gray-100': {}
 				},
 				'.btn-sm': {
-					'@apply borders p-2 rounded-full bg-white hover:bg-gray-100': {}
+					'@apply btn rounded-full': {}
 				}
 			});
 		}
