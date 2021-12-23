@@ -1,21 +1,16 @@
 <script>
-	import { session } from '$app/stores';
+	// Note: copied from desktop clock and modified
 
+	import { session } from '$app/stores';
 	import Icon from './Icon.svelte';
 
 	export let title;
 	export let icon;
 
 	let shown = false;
-	export function show() {
-		shown = true;
-	}
-	export function hide() {
-		shown = false;
-	}
-	export function toggle() {
-		shown = !shown;
-	}
+	export const show = () => (shown = true);
+	export const hide = () => (shown = false);
+	export const toggle = () => (shown = !shown);
 </script>
 
 <svelte:window
