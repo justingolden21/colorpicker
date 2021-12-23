@@ -302,7 +302,7 @@
 	</button>
 </div>
 
-<Modal bind:this={historyModal} title="Keyboard Shortcuts" icon="history" />
+<Modal bind:this={historyModal} title="History" icon="history" />
 
 <Toasts />
 
