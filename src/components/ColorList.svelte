@@ -30,7 +30,10 @@
 
 {#if items && items.length > 0}
 	<p>{items.length} items</p>
-	<button on:click={removeAll}>remove all</button>
+	<button class="btn" on:click={removeAll}>
+		<Icon name="close" class="inline w-4 h-4" />
+		Remove All
+	</button>
 	<div>
 		{#each items as item, idx (item.timestamp)}
 			<div class="surface grid grid-cols-2 md:grid-cols-4 gap-2">
@@ -48,11 +51,20 @@
 					<button class="btn">
 						<Icon name="heart" class="inline w-4 h-4" />
 					</button>
+					<button class="btn">
+						<Icon name="heart" class="inline w-4 h-4" />
+					</button>
 				</div>
-				<button on:click={() => remove(item.timestamp)}>x</button>
+				<div>
+					<button class="btn" on:click={() => remove(item.timestamp)}>
+						<Icon name="close" class="inline w-4 h-4" />
+					</button>
+				</div>
 			</div>
 		{/each}
 	</div>
+{:else}
+	<p>No colors</p>
 {/if}
 
 <style lang="postcss">
