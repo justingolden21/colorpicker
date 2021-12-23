@@ -12,6 +12,7 @@
 	import { Toasts, addToast } from '../components/Toast/_toast.js';
 	import { getUrlParam, setUrlParam, removeUrlParam } from '../components/urlParam.js';
 	import Modal from '../components/Modal.svelte';
+	import ColorList from '../components/ColorList.svelte';
 
 	let pageLoaded = false;
 	let color = $settings.color || '#000000';
@@ -20,11 +21,14 @@
 
 	let historyModal;
 
+	let historyList;
+
 	$: if (color) {
 		$settings.color = color;
 		if (colorPicker) colorPicker.value = color;
 		if (setColorProperty) setColorProperty(color);
 		if (pageLoaded) updateLink();
+		if (historyList) historyList.add({ color, name: '' });
 	}
 
 	let setColorProperty;
@@ -302,11 +306,7 @@
 </div>
 
 <Modal bind:this={historyModal} title="History" icon="history">
-	<p>
-		Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestiae consequuntur quos quibusdam
-		eligendi earum at reiciendis asperiores omnis sunt excepturi suscipit, labore voluptatum
-		doloremque id aliquam aperiam natus praesentium. Debitis?
-	</p>
+	<ColorList bind:this={historyList} />
 </Modal>
 
 <Toasts />
