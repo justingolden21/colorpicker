@@ -29,7 +29,7 @@
 	on:click={() => hide()}
 >
 	<div
-		class="modal-content h-full surface p-2 xs:p-8 relative m-auto w-full md:w-3/4"
+		class="modal-content overflow-auto h-full surface p-2 xs:p-8 relative m-auto w-full md:w-3/4"
 		on:click|stopPropagation
 	>
 		<div class="mb-4 border-b-2 border-gray-200 pb-8">
@@ -42,7 +42,7 @@
 			</button>
 			<h1 class="text-left"><Icon name={icon} class="w-6 h-6 inline mr-2" /> {title}</h1>
 		</div>
-		<div class="text-left relative overflow-auto">
+		<div class="text-left relative">
 			<slot />
 		</div>
 	</div>
