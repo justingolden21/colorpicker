@@ -34,6 +34,7 @@
 		<Icon name="close" class="inline w-4 h-4" />
 		Remove All
 	</button>
+	<!-- TODO: dropdown to sort by (name, date, etc) -->
 	<div>
 		{#each items as item, idx (item.timestamp)}
 			<div class="surface grid grid-cols-2 md:grid-cols-4 gap-2">

@@ -1,3 +1,7 @@
+maybe:
+change saved icon to list icon?
+modal has two sections for history and for favorites, use tabs?
+
 future:
 alpha/opacity
 url param
@@ -9,8 +13,10 @@ save and organize colors
 quick copy for css color, background, background-color, border-color (dropdown for property, dropdown for css/less/sass, dropdown for color format (rgb,hex,hsl))
 three digit hex / four digit hex
 info on color modes
-
+help btn with info on how to copy to clipboard, what icon btns do, etc
+add titles to icon btns?
 install btn, share btn
+option to download colors with names as json, option to download css file or copy text for css variables
 
 info btn with contact. fullscreen btn? fullscreen preview color?
 
@@ -21,3 +27,10 @@ preview modal with text and other samples, shapes
 
 maybe:
 info btn next to input that shows examples of what you can type
+
+far future / maybe:
+color palette generator
+get color from img
+get palette from img
+share palettes
+color folders
