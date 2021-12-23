@@ -11,11 +11,14 @@
 	import Range from '../components/Range.svelte';
 	import { Toasts, addToast } from '../components/Toast/_toast.js';
 	import { getUrlParam, setUrlParam, removeUrlParam } from '../components/urlParam.js';
+	import Modal from '../components/Modal.svelte';
 
 	let pageLoaded = false;
 	let color = $settings.color || '#000000';
 	let colorPicker;
 	let pickerOpen = true;
+
+	let historyModal;
 
 	$: if (color) {
 		$settings.color = color;
@@ -287,7 +290,7 @@
 	{/each}
 </div>
 <div class="grid grid-cols-3 fixed bottom-0 w-full my-4 -mx-8">
-	<button class="btn rounded-full w-12 h-12 mx-auto">
+	<button class="btn rounded-full w-12 h-12 mx-auto" on:click={historyModal.show}>
 		<Icon name="history" class="inline w-4 h-4" />
 	</button>
 	<button class="btn rounded-full w-12 h-12 mx-auto">
@@ -297,6 +300,8 @@
 		<Icon name="heart" class="inline w-4 h-4" />
 	</button>
 </div>
+
+<Modal bind:this={historyModal} title="Keyboard Shortcuts" icon="history" />
 
 <Toasts />
 
