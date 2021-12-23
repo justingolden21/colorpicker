@@ -34,7 +34,7 @@
 	>
 		<div class="mb-4 border-b-2 border-gray-200 pb-8">
 			<button
-				class="btn-sm z-30 float-right"
+				class="btn-circle z-30 float-right"
 				on:click={() => hide()}
 				aria-label={$session.languageDictionary.labels['Close']}
 			>

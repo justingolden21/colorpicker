@@ -295,13 +295,13 @@
 </div>
 <div class="h-16" />
 <div class="grid grid-cols-3 fixed bottom-0 w-full py-4 -mx-8 bg-white">
-	<button class="btn-sm w-12 h-12 mx-auto" on:click={historyModal.show}>
+	<button class="btn-circle w-12 h-12 mx-auto" on:click={historyModal.show}>
 		<Icon name="history" class="inline w-4 h-4" />
 	</button>
-	<button class="btn-sm w-12 h-12 mx-auto">
+	<button class="btn-circle w-12 h-12 mx-auto">
 		<Icon name="saved" class="inline w-4 h-4" />
 	</button>
-	<button class="btn-sm w-12 h-12 mx-auto">
+	<button class="btn-circle w-12 h-12 mx-auto">
 		<Icon name="heart" class="inline w-4 h-4" />
 	</button>
 </div>

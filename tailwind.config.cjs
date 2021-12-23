@@ -27,7 +27,7 @@ module.exports = {
 				'.btn': {
 					'@apply surface hover:bg-gray-100': {}
 				},
-				'.btn-sm': {
+				'.btn-circle': {
 					'@apply btn rounded-full': {}
 				}
 			});
