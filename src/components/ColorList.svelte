@@ -24,6 +24,7 @@
 	<p>{items.length} items</p>
 	<div>
 		{#each items as item, idx (item.timestamp)}
+			<div class="w-4 h-4 rounded" style="background-color: {item.color}" />
 			<p>{item.color}</p>
 			{#if item.name}
 				<p>{item.name}</p>
