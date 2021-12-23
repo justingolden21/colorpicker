@@ -10,7 +10,9 @@
 	import CopyableInput from '../components/CopyableInput.svelte';
 	import Range from '../components/Range.svelte';
 	import { Toasts, addToast } from '../components/Toast/_toast.js';
+	import { getUrlParam, setUrlParam, removeUrlParam } from '../components/urlParam.js';
 
+	let pageLoaded = false;
 	let color = $settings.color || '#000000';
 	let colorPicker;
 	let pickerOpen = true;
@@ -19,6 +21,7 @@
 		$settings.color = color;
 		if (colorPicker) colorPicker.value = color;
 		if (setColorProperty) setColorProperty(color);
+		if (pageLoaded) updateLink();
 	}
 
 	let setColorProperty;
@@ -53,7 +56,27 @@
 
 		setColorProperty = (color) =>
 			document.documentElement.style.setProperty('--current-color', color);
+
+		const c = getUrlParam('c');
+		if (c) {
+			// TODO: validation like in readColorString
+			color = '#' + c;
+		}
+
+		pageLoaded = true;
 	});
+
+	const updateLink = () => {
+		if ($settings.colorInUrl) {
+			setUrlParam('c', color.replace('#', ''));
+		} else {
+			removeUrlParam();
+		}
+	};
+	const copyLink = () => {
+		// TODO lol
+		addToast({ message: 'Copied', type: 'info', timeout: 3000 });
+	};
 
 	const readColorString = (evt) => {
 		const str = evt.target.value;
@@ -168,11 +191,13 @@
 		<button
 			class="btn mr-2 mb-2"
 			on:click={() => {
-				addToast({ message: 'message', type: 'info', timeout: 3000 });
+				$settings.colorInUrl = !$settings.colorInUrl;
+				updateLink();
+				copyLink();
 			}}
 		>
 			<Icon name="link" class="inline w-4 h-4" />
-			Link
+			{$settings.colorInUrl ? 'Unlink' : 'Link'}
 		</button>
 		<button class="btn mr-2 mb-2" on:click={() => (color = '#000000')}>
 			<Icon name="reset" class="inline w-4 h-4" />
