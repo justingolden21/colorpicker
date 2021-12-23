@@ -26,6 +26,9 @@ module.exports = {
 				},
 				'.btn': {
 					'@apply surface hover:bg-gray-100': {}
+				},
+				'.btn-sm': {
+					'@apply borders p-2 rounded-full bg-white hover:bg-gray-100': {}
 				}
 			});
 		}

@@ -290,19 +290,24 @@
 	{/each}
 </div>
 <div class="grid grid-cols-3 fixed bottom-0 w-full my-4 -mx-8">
-	<!-- TODO: rounded-full not applying because of btn -->
-	<button class="btn rounded-full w-12 h-12 mx-auto" on:click={historyModal.show}>
+	<button class="btn-sm w-12 h-12 mx-auto" on:click={historyModal.show}>
 		<Icon name="history" class="inline w-4 h-4" />
 	</button>
-	<button class="btn rounded-full w-12 h-12 mx-auto">
+	<button class="btn-sm w-12 h-12 mx-auto">
 		<Icon name="saved" class="inline w-4 h-4" />
 	</button>
-	<button class="btn rounded-full w-12 h-12 mx-auto">
+	<button class="btn-sm w-12 h-12 mx-auto">
 		<Icon name="heart" class="inline w-4 h-4" />
 	</button>
 </div>
 
-<Modal bind:this={historyModal} title="History" icon="history" />
+<Modal bind:this={historyModal} title="History" icon="history">
+	<p>
+		Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestiae consequuntur quos quibusdam
+		eligendi earum at reiciendis asperiores omnis sunt excepturi suscipit, labore voluptatum
+		doloremque id aliquam aperiam natus praesentium. Debitis?
+	</p>
+</Modal>
 
 <Toasts />
 
