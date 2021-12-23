@@ -74,8 +74,16 @@
 		}
 	};
 	const copyLink = () => {
-		// TODO lol
-		addToast({ message: 'Copied', type: 'info', timeout: 3000 });
+		navigator.clipboard.writeText(window.location.href).then(
+			() => {
+				console.log('clipboard successfully set');
+				addToast({ message: 'Copied', type: 'success', timeout: 3000 });
+			},
+			() => {
+				console.log('clipboard write failed');
+				addToast({ message: 'Failed to copy', type: 'info', timeout: 3000 });
+			}
+		);
 	};
 
 	const readColorString = (evt) => {
@@ -193,7 +201,7 @@
 			on:click={() => {
 				$settings.colorInUrl = !$settings.colorInUrl;
 				updateLink();
-				copyLink();
+				if ($settings.colorInUrl) copyLink();
 			}}
 		>
 			<Icon name="link" class="inline w-4 h-4" />
