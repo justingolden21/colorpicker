@@ -33,8 +33,8 @@
 	{#if timeout}
 		<div
 			class="absolute bottom-0 left-0 h-1 bg-gray-600"
-			style="animation-duration: {timeout /
-				1000}s; animation-timing-function: linear; animation-name: shrink;"
+			style="animation-duration: {timeout / 1000}s;
+                animation-timing-function: linear; animation-name: shrink;"
 		/>
 	{/if}
 </div>
