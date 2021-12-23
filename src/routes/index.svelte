@@ -290,6 +290,7 @@
 	{/each}
 </div>
 <div class="grid grid-cols-3 fixed bottom-0 w-full my-4 -mx-8">
+	<!-- TODO: rounded-full not applying because of btn -->
 	<button class="btn rounded-full w-12 h-12 mx-auto" on:click={historyModal.show}>
 		<Icon name="history" class="inline w-4 h-4" />
 	</button>
