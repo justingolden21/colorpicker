@@ -23,24 +23,24 @@
 />
 
 <div
-	class="xs:p-4 sm:p-8 md:p-12 fixed left-0 top-0 w-full h-full bg-white bg-opacity-75 z-20 {shown
+	class="xs:p-4 sm:p-8 fixed left-0 top-0 w-full h-full bg-white bg-opacity-75 z-20 {shown
 		? 'block'
 		: 'hidden'}"
 	on:click={() => hide()}
 >
 	<div
-		class="modal-content flex flex-col h-full surface p-2 xs:p-8 xs:pt-4 relative m-auto w-full md:w-3/4"
+		class="modal-content flex flex-col h-full surface p-2 xs:p-8 relative m-auto w-full md:w-3/4"
 		on:click|stopPropagation
 	>
 		<div class="mb-4 border-b-2 border-gray-200 pb-8">
 			<button
-				class="btn-sm z-30 float-right mt-4"
+				class="btn-sm z-30 float-right"
 				on:click={() => hide()}
 				aria-label={$session.languageDictionary.labels['Close']}
 			>
 				<Icon name="close" class="w-6 h-6" />
 			</button>
-			<h1 class="text-left mt-4"><Icon name={icon} class="w-6 h-6 inline mr-2" /> {title}</h1>
+			<h1 class="text-left"><Icon name={icon} class="w-6 h-6 inline mr-2" /> {title}</h1>
 		</div>
 		<div class="text-left relative flex-1 overflow-auto">
 			<slot />
