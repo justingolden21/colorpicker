@@ -298,18 +298,16 @@
 	{/each}
 </div>
 <div class="h-16" />
-<div class="w-full fixed bottom-0 -mx-8">
-	<div class="grid grid-cols-3 w-3/4 py-4 mx-auto bg-white">
-		<button class="btn-circle w-12 h-12 mx-auto" on:click={historyModal.show}>
-			<Icon name="history" class="inline w-4 h-4" />
-		</button>
-		<button class="btn-circle w-12 h-12 mx-auto">
-			<Icon name="saved" class="inline w-4 h-4" />
-		</button>
-		<button class="btn-circle w-12 h-12 mx-auto">
-			<Icon name="heart" class="inline w-4 h-4" />
-		</button>
-	</div>
+<div class="grid grid-cols-3 py-4 w-full fixed bottom-0 -mx-8 bg-white bg-opacity-80">
+	<button class="btn-circle w-12 h-12 mx-auto" on:click={historyModal.show}>
+		<Icon name="history" class="inline w-4 h-4" />
+	</button>
+	<button class="btn-circle w-12 h-12 mx-auto">
+		<Icon name="saved" class="inline w-4 h-4" />
+	</button>
+	<button class="btn-circle w-12 h-12 mx-auto">
+		<Icon name="heart" class="inline w-4 h-4" />
+	</button>
 </div>
 
 <Modal bind:this={historyModal} title="History" icon="history">
