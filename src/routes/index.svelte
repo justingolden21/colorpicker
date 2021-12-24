@@ -61,8 +61,12 @@
 
 		colorPicker = document.querySelector('dino-color-picker');
 
-		setColorProperty = (color) =>
+		setColorProperty = (color) => {
 			document.documentElement.style.setProperty('--current-color', color);
+			// TODO: more validation for below
+			// gets color without alpha and adds opacity of 33 out of FF
+			document.body.style.backgroundColor = color.substring(0, 7) + '33';
+		};
 
 		const c = getUrlParam('c');
 		if (c) {
@@ -294,16 +298,18 @@
 	{/each}
 </div>
 <div class="h-16" />
-<div class="grid grid-cols-3 fixed bottom-0 w-full py-4 -mx-8 bg-white">
-	<button class="btn-circle w-12 h-12 mx-auto" on:click={historyModal.show}>
-		<Icon name="history" class="inline w-4 h-4" />
-	</button>
-	<button class="btn-circle w-12 h-12 mx-auto">
-		<Icon name="saved" class="inline w-4 h-4" />
-	</button>
-	<button class="btn-circle w-12 h-12 mx-auto">
-		<Icon name="heart" class="inline w-4 h-4" />
-	</button>
+<div class="w-full fixed bottom-0 -mx-8">
+	<div class="grid grid-cols-3 w-3/4 py-4 mx-auto bg-white">
+		<button class="btn-circle w-12 h-12 mx-auto" on:click={historyModal.show}>
+			<Icon name="history" class="inline w-4 h-4" />
+		</button>
+		<button class="btn-circle w-12 h-12 mx-auto">
+			<Icon name="saved" class="inline w-4 h-4" />
+		</button>
+		<button class="btn-circle w-12 h-12 mx-auto">
+			<Icon name="heart" class="inline w-4 h-4" />
+		</button>
+	</div>
 </div>
 
 <Modal bind:this={historyModal} title="History" icon="history">
@@ -314,6 +320,6 @@
 
 <style lang="postcss">
 	.colormode {
-		@apply surface p-4;
+		@apply surface p-4 bg-white;
 	}
 </style>
