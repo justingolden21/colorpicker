@@ -12,6 +12,9 @@ modal has two sections for history and for favorites, use tabs?
 
 keyboard shortcuts for random, history, favorite, focus to type color, etc
 
+ui:
+color item with arrow down/up that toggles additional btns
+
 future:
 alpha/opacity
 url param
