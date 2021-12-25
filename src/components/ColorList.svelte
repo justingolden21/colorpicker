@@ -20,10 +20,13 @@
 
 	// todo: dont add duplicate items, check if prev item matches current
 	export const add = (item) => {
-		items = items.concat({
-			...item,
-			timestamp: Date.now()
-		});
+		items = [
+			{
+				...item,
+				timestamp: Date.now()
+			},
+			...items
+		];
 	};
 	const removeAll = () => (items = []);
 </script>
