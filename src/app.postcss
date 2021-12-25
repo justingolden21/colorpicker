@@ -37,16 +37,19 @@
 }
 
 @layer components {
-	/* .borders {
+	.borders {
 		@apply border-2 border-gray-200;
 	}
 	.surface {
-		@apply borders p-2 rounded;
+		@apply borders p-2 rounded bg-white;
 	}
-	.surface:not(:focus) {
+	/* .surface:not(:focus) {
 		box-shadow: 2px 4px 4px #d4d4d8;
-	}
-	.btn {
-		@apply surface bg-white hover:bg-gray-100;
 	} */
+	.btn {
+		@apply surface hover:bg-gray-100;
+	}
+	.btn-circle {
+		@apply btn rounded-full;
+	}
 }
