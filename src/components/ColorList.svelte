@@ -46,17 +46,19 @@
 					<span>{item.color}</span>
 				</div>
 				<div class="md:col-span-2">
-					<button>open</button>
-					<button>edit</button>
-					<!-- <button>move</button> -->
-					<!-- <button>share</button> -->
-					<!-- <button>copy</button> -->
-					<button class="btn">
-						<Icon name="heart" class="inline w-4 h-4" />
-					</button>
-					<button class="btn" on:click={() => remove(item.timestamp)}>
-						<Icon name="close" class="inline w-4 h-4" />
-					</button>
+					<div class="float-right">
+						<button>open</button>
+						<button>edit</button>
+						<!-- <button>move</button> -->
+						<!-- <button>share</button> -->
+						<!-- <button>copy</button> -->
+						<button class="btn">
+							<Icon name="heart" class="inline w-4 h-4" />
+						</button>
+						<button class="btn" on:click={() => remove(item.timestamp)}>
+							<Icon name="close" class="inline w-4 h-4" />
+						</button>
+					</div>
 				</div>
 			</div>
 		{/each}
