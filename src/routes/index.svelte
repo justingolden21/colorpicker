@@ -179,7 +179,7 @@
 <svelte:window on:keydown={handleKeydown} />
 
 <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
-	<div class="flex items-start">
+	<div class="flex order-3 md:order-1 mx-auto md:mx-0">
 		<input
 			id="auto-detect-input"
 			class="w-48"
@@ -213,37 +213,39 @@
 			</div>
 		</button>
 	</div>
-	<h1 class="text-center {c.isDark() ? 'text-white' : 'text-gray-900'}">
+	<h1 class="order-1 md:order-2 text-center {c.isDark() ? 'text-white' : 'text-gray-900'}">
 		{$session.languageDictionary.appName}
 	</h1>
-	<div class="mx-auto">
-		<button
-			class="btn mr-2 mb-2"
-			on:click={() => {
-				$settings.colorInUrl = !$settings.colorInUrl;
-				updateLink();
-				if ($settings.colorInUrl) copyLink();
-			}}
-		>
-			<Icon name="link" class="inline w-4 h-4" />
-			{$settings.colorInUrl ? 'Unlink' : 'Link'}
-		</button>
-		<button class="btn mr-2 mb-2" on:click={() => (color = '#000000')}>
-			<Icon name="reset" class="inline w-4 h-4" />
-			Reset
-		</button>
-		<button
-			class="btn mr-2 mb-2"
-			on:click={() =>
-				(color =
-					'#' +
-					Math.floor(Math.random() * 0xffffff)
-						.toString(16)
-						.padStart(6, '0'))}
-		>
-			<Icon name="random" class="inline w-4 h-4" />
-			Random
-		</button>
+	<div class="order-2 md:order-3 mx-auto md:mx-0">
+		<div class="float-right">
+			<button
+				class="btn mr-2 mb-2"
+				on:click={() => {
+					$settings.colorInUrl = !$settings.colorInUrl;
+					updateLink();
+					if ($settings.colorInUrl) copyLink();
+				}}
+			>
+				<Icon name="link" class="inline w-4 h-4" />
+				{$settings.colorInUrl ? 'Unlink' : 'Link'}
+			</button>
+			<button class="btn mr-2 mb-2" on:click={() => (color = '#000000')}>
+				<Icon name="reset" class="inline w-4 h-4" />
+				Reset
+			</button>
+			<button
+				class="btn mb-2"
+				on:click={() =>
+					(color =
+						'#' +
+						Math.floor(Math.random() * 0xffffff)
+							.toString(16)
+							.padStart(6, '0'))}
+			>
+				<Icon name="random" class="inline w-4 h-4" />
+				Random
+			</button>
+		</div>
 	</div>
 </div>
 
