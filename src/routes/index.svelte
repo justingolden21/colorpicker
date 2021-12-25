@@ -16,6 +16,7 @@
 
 	let color = $settings.color || '#000000';
 	let c;
+	let isFavorite = false;
 
 	let pageLoaded = false;
 	let colorPicker;
@@ -39,6 +40,7 @@
 		}
 		c = w3color(color);
 		c.opacity = opacity;
+		isFavorite = false;
 	}
 
 	let setColorProperty;
@@ -338,10 +340,13 @@
 	</button>
 	<button
 		class="btn-circle w-12 h-12 mx-auto"
-		on:click={() => favoritesList.add({ color, name: '' })}
+		on:click={() => {
+			favoritesList.add({ color, name: '' });
+			isFavorite = true;
+		}}
 		title="Favorite"
 	>
-		<Icon name="heart" class="inline w-4 h-4" />
+		<Icon name="heart" class="inline w-4 h-4" fillColor={isFavorite ? color : 'none'} />
 	</button>
 </div>
 

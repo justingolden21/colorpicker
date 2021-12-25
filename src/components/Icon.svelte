@@ -1,6 +1,7 @@
 <script>
 	export let name;
 	export let focusable = false;
+	export let fillColor = 'none';
 
 	// https://heroicons.dev/
 	const icons = [
@@ -54,7 +55,7 @@
 	class={$$props.class ?? ''}
 	{focusable}
 	stroke="currentColor"
-	fill="none"
+	fill={fillColor}
 	xmlns="http://www.w3.org/2000/svg"
 	xmlns:xlink="http://www.w3.org/1999/xlink"
 	viewBox={icon.viewbox ?? '0 0 24 24'}
