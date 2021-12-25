@@ -252,7 +252,7 @@
 			{#if colormode === 'RGB'}
 				<CopyableInput class="mb-4" value={hexString} onChange={readColorString} />
 			{/if}
-			<div class="grid {colormode === 'CMYK' ? 'grid-cols-2' : 'grid-cols-3'} gap-2">
+			<div class="grid {colormode === 'CMYK' ? 'grid-cols-2 lg:grid-cols-4' : 'grid-cols-3'} gap-2">
 				{#each [['red', 'green', 'blue'], ['cyan', 'magenta', 'yellow', 'key'], ['hue', 'saturation', 'lightness'], ['hue', 'whiteness', 'blackness']][idx] as type, idx2}
 					<div class={idx === 0 ? 'ml-4' : ''}>
 						<label for="{type}-input">{capitalize(type)}:</label>
@@ -301,7 +301,7 @@
 	{/each}
 </div>
 <div class="h-16" />
-<div class="grid grid-cols-3 py-4 w-full fixed bottom-0 -mx-8 bg-white bg-opacity-80">
+<div class="grid grid-cols-3 py-4 w-full fixed bottom-0 -mx-8 bg-white bg-opacity-90">
 	<button class="btn-circle w-12 h-12 mx-auto" on:click={historyModal.show}>
 		<Icon name="history" class="inline w-4 h-4" />
 	</button>
