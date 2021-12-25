@@ -47,3 +47,4 @@ get color from img
 get palette from img
 share palettes
 color folders
+chose which color mode you are in, store colors in that mode, etc
