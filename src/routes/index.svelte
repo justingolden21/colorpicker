@@ -191,13 +191,8 @@
 		/>
 
 		<button
-			class="border-2 relative w-10 h-10 rounded ml-4 z-10 hover:border-gray-400 {c.isDark()
-				? 'border-white'
-				: 'border-gray-900'}"
-			style="
-            background: url(img/icons/icon{c.isDark()
-				? '-white'
-				: ''}.svg) 0.125rem 0.125rem / 2rem no-repeat transparent"
+			class="btn relative w-10 h-10 ml-4 z-10"
+			style="background: url(img/icons/icon.svg) 0.125rem 0.125rem / 2rem no-repeat white"
 			on:click|self={() => {
 				pickerOpen = !pickerOpen;
 			}}
