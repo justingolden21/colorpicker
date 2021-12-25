@@ -25,6 +25,9 @@ option to download colors with names as json, option to download css file or cop
 
 info btn with contact. fullscreen btn? fullscreen preview color?
 
+settings ideas:
+hex caps or lower
+
 future components:
 range inputs, toast for copy, slider for mobile
 

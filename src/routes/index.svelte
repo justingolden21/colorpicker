@@ -53,7 +53,7 @@
 	$: hslaString = c.toHslaString();
 	$: hwbString = c.toHwbString();
 	$: hwbaString = c.toHwbaString();
-	$: hexString = color;
+	$: hexString = color.toUpperCase();
 
 	$: red = c.red;
 	$: green = c.green;
