@@ -21,9 +21,9 @@
 	let colorPicker;
 	let pickerOpen = false;
 
-	let historyModal;
+	let historyModal, favoritesModal;
 
-	let historyList;
+	let historyList, favoritesList;
 
 	$: if (color) {
 		$settings.color = color;
@@ -333,16 +333,24 @@
 	<button class="btn-circle w-12 h-12 mx-auto" on:click={historyModal.show} title="History">
 		<Icon name="history" class="inline w-4 h-4" />
 	</button>
-	<button class="btn-circle w-12 h-12 mx-auto" title="Saved">
+	<button class="btn-circle w-12 h-12 mx-auto" on:click={favoritesModal.show} title="Saved">
 		<Icon name="saved" class="inline w-4 h-4" />
 	</button>
-	<button class="btn-circle w-12 h-12 mx-auto" title="Favorite">
+	<button
+		class="btn-circle w-12 h-12 mx-auto"
+		on:click={() => favoritesList.add({ color, name: '' })}
+		title="Favorite"
+	>
 		<Icon name="heart" class="inline w-4 h-4" />
 	</button>
 </div>
 
 <Modal bind:this={historyModal} title="History" icon="history">
 	<ColorList bind:this={historyList} />
+</Modal>
+
+<Modal bind:this={favoritesModal} title="Favorites" icon="heart">
+	<ColorList bind:this={favoritesList} />
 </Modal>
 
 <Toasts />
