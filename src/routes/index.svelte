@@ -339,6 +339,6 @@
 
 <style lang="postcss">
 	.colormode {
-		@apply surface p-4 bg-white;
+		@apply surface p-4;
 	}
 </style>

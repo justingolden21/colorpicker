@@ -22,7 +22,7 @@ module.exports = {
 					'@apply border-2 border-gray-200': {}
 				},
 				'.surface': {
-					'@apply borders p-2 rounded bg-white': {}
+					'@apply borders p-2 rounded bg-white bg-opacity-90': {}
 				},
 				'.btn': {
 					'@apply surface hover:bg-gray-100': {}
