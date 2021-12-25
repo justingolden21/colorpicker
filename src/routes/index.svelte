@@ -14,8 +14,11 @@
 	import Modal from '../components/Modal.svelte';
 	import ColorList from '../components/ColorList.svelte';
 
-	let pageLoaded = false;
 	let color = $settings.color || '#000000';
+	let opacity = 1;
+	let c;
+
+	let pageLoaded = false;
 	let colorPicker;
 	let pickerOpen = false;
 
@@ -29,31 +32,46 @@
 		if (setColorProperty) setColorProperty(color);
 		if (pageLoaded) updateLink();
 		if (historyList) historyList.add({ color, name: '' });
+		if (color.substring(8)) {
+			opacity = Math.round((parseInt(color.slice(-2), 16) / 255) * 100) / 100;
+		} else {
+			opacity = 1;
+		}
+		c = w3color(color);
+		if (c && c.opacity) {
+			c.opacity = opacity;
+			console.log(opacity);
+		}
 	}
 
 	let setColorProperty;
 
 	// updates when `color` updates
-	$: rgbString = w3color(color).toRgbString();
-	$: cmykString = w3color(color).toCmykString();
-	$: hslString = w3color(color).toHslString();
-	$: hwbString = w3color(color).toHwbString();
+	// $: c = w3color(color);
+
+	$: rgbString = c.toRgbString();
+	$: rgbaString = c.toRgbaString();
+	$: cmykString = c.toCmykString();
+	$: hslString = c.toHslString();
+	$: hslaString = c.toHslaString();
+	$: hwbString = c.toHwbString();
+	$: hwbaString = c.toHwbaString();
 	$: hexString = color;
 
-	$: red = w3color(color).red;
-	$: green = w3color(color).green;
-	$: blue = w3color(color).blue;
+	$: red = c.red;
+	$: green = c.green;
+	$: blue = c.blue;
 
-	$: cyan = Math.round(w3color(color).cyan * 100);
-	$: magenta = Math.round(w3color(color).magenta * 100);
-	$: yellow = Math.round(w3color(color).yellow * 100);
-	$: key = Math.round(w3color(color).black * 100);
+	$: cyan = Math.round(c.cyan * 100);
+	$: magenta = Math.round(c.magenta * 100);
+	$: yellow = Math.round(c.yellow * 100);
+	$: key = Math.round(c.black * 100);
 
-	$: hue = w3color(color).hue;
-	$: saturation = Math.round(w3color(color).sat * 100);
-	$: lightness = Math.round(w3color(color).lightness * 100);
-	$: whiteness = Math.round(w3color(color).whiteness * 100);
-	$: blackness = Math.round(w3color(color).blackness * 100);
+	$: hue = c.hue;
+	$: saturation = Math.round(c.sat * 100);
+	$: lightness = Math.round(c.lightness * 100);
+	$: whiteness = Math.round(c.whiteness * 100);
+	$: blackness = Math.round(c.blackness * 100);
 
 	onMount(async () => {
 		// https://kit.svelte.dev/faq
@@ -97,9 +115,8 @@
 
 	const readColorString = (evt) => {
 		const str = evt.target.value;
-		const c = w3color(str);
-		if (!c.valid) return; // TODO toast saying invalid color
-		color = c.toHexString();
+		const newColor = w3color(str);
+		if (newColor.valid) color = newColor.toHexString();
 	};
 
 	function handleKeydown(event) {
@@ -109,9 +126,8 @@
 	const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
 
 	const setColorItem = (str) => {
-		const c = w3color(str);
-		if (!c.valid) return;
-		color = c.toHexString();
+		const newColor = w3color(str);
+		if (newColor.valid) color = newColor.toHexString();
 	};
 
 	const setRgbItem = (evt) => {
@@ -178,13 +194,11 @@
 		/>
 
 		<button
-			class="border-2 relative w-10 h-10 rounded ml-4 z-10 hover:border-gray-400 {w3color(
-				color
-			).isDark()
+			class="border-2 relative w-10 h-10 rounded ml-4 z-10 hover:border-gray-400 {c.isDark()
 				? 'border-white'
 				: 'border-gray-900'}"
 			style="
-            background: url(img/icons/icon{w3color(color).isDark()
+            background: url(img/icons/icon{c.isDark()
 				? '-white'
 				: ''}.svg) 0.125rem 0.125rem / 2rem no-repeat transparent"
 			on:click|self={() => {
@@ -206,7 +220,7 @@
 			</div>
 		</button>
 	</div>
-	<h1 class="text-center {w3color(color).isDark() ? 'text-white' : 'text-gray-900'}">
+	<h1 class="text-center {c.isDark() ? 'text-white' : 'text-gray-900'}">
 		{$session.languageDictionary.appName}
 	</h1>
 	<div class="mx-auto">
@@ -249,6 +263,13 @@
 				value={[rgbString, cmykString, hslString, hwbString][idx]}
 				onChange={readColorString}
 			/>
+			{#if colormode !== 'CMYK'}
+				<CopyableInput
+					class="mb-4"
+					value={[rgbaString, null, hslaString, hwbaString][idx]}
+					onChange={readColorString}
+				/>
+			{/if}
 			{#if colormode === 'RGB'}
 				<CopyableInput class="mb-4" value={hexString} onChange={readColorString} />
 			{/if}
