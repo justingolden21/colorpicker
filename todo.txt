@@ -1,5 +1,7 @@
 bugs:
 set color with opacity through text string
+on drag don't add history items
+local storage sync history
 
 maybe:
 change saved icon to list icon?
