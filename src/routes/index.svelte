@@ -186,7 +186,7 @@
 			style="
             background: url(img/icons/icon{w3color(color).isDark()
 				? '-white'
-				: ''}.svg) 0.125rem 0.125rem / 2rem no-repeat {color}"
+				: ''}.svg) 0.125rem 0.125rem / 2rem no-repeat transparent"
 			on:click|self={() => {
 				pickerOpen = !pickerOpen;
 			}}
