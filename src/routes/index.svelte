@@ -15,7 +15,6 @@
 	import ColorList from '../components/ColorList.svelte';
 
 	let color = $settings.color || '#000000';
-	let opacity = 1;
 	let c;
 
 	let pageLoaded = false;
@@ -32,16 +31,14 @@
 		if (setColorProperty) setColorProperty(color);
 		if (pageLoaded) updateLink();
 		if (historyList) historyList.add({ color, name: '' });
+		let opacity;
 		if (color.substring(8)) {
 			opacity = Math.round((parseInt(color.slice(-2), 16) / 255) * 100) / 100;
 		} else {
 			opacity = 1;
 		}
 		c = w3color(color);
-		if (c && c.opacity) {
-			c.opacity = opacity;
-			console.log(opacity);
-		}
+		c.opacity = opacity;
 	}
 
 	let setColorProperty;
