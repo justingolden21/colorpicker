@@ -42,7 +42,7 @@
 					<input type="text" class="w-full" placeholder="Color name" bind:value={item.name} />
 				</div>
 				<div>
-					<div class="w-8 h-8 rounded" style="background-color: {item.color}" />
+					<div class="w-8 h-8 rounded inline-block" style="background-color: {item.color}" />
 					<span>{item.color}</span>
 				</div>
 				<div class="md:col-span-2">
