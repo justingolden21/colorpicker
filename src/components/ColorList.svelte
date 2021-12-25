@@ -50,11 +50,13 @@
 				</div>
 				<div class="md:col-span-2">
 					<div class="float-right">
-						<button>open</button>
-						<button>edit</button>
+						<!-- <button>edit</button> -->
 						<!-- <button>move</button> -->
 						<!-- <button>share</button> -->
 						<!-- <button>copy</button> -->
+						<button class="btn">
+							<Icon name="open" class="inline w-4 h-4" />
+						</button>
 						<button class="btn">
 							<Icon name="heart" class="inline w-4 h-4" />
 						</button>
