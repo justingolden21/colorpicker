@@ -32,6 +32,7 @@
 			);
 		}}
 		class="btn absolute inset-y-0 right-0 flex items-center"
+		title="Copy"
 	>
 		<Icon name="copy" class="w-6 h-6" />
 	</button>

@@ -208,6 +208,7 @@
 						color = event.target.value;
 						document.getElementById('auto-detect-input').value = '';
 					}}
+					title="Color Picker"
 				/>
 			</div>
 		</button>
@@ -327,13 +328,13 @@
 </div>
 <div class="h-16" />
 <div class="grid grid-cols-3 py-4 w-full fixed bottom-0 -mx-8 bg-white bg-opacity-90">
-	<button class="btn-circle w-12 h-12 mx-auto" on:click={historyModal.show}>
+	<button class="btn-circle w-12 h-12 mx-auto" on:click={historyModal.show} title="History">
 		<Icon name="history" class="inline w-4 h-4" />
 	</button>
-	<button class="btn-circle w-12 h-12 mx-auto">
+	<button class="btn-circle w-12 h-12 mx-auto" title="Saved">
 		<Icon name="saved" class="inline w-4 h-4" />
 	</button>
-	<button class="btn-circle w-12 h-12 mx-auto">
+	<button class="btn-circle w-12 h-12 mx-auto" title="Favorite">
 		<Icon name="heart" class="inline w-4 h-4" />
 	</button>
 </div>
