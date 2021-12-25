@@ -63,9 +63,7 @@
 
 		setColorProperty = (color) => {
 			document.documentElement.style.setProperty('--current-color', color);
-			// TODO: more validation for below
-			// gets color without alpha and adds opacity of 33 out of FF
-			document.body.style.backgroundColor = color.substring(0, 7) + '33';
+			document.body.style.backgroundColor = color;
 		};
 
 		const c = getUrlParam('c');
@@ -179,13 +177,16 @@
 			on:focus={(evt) => evt.target.select()}
 		/>
 
-		<!-- style="background:url('img/icons/icon{w3color(color).isDark()
-            ? '-white'
-            : ''}.svg'); background-color: {color};" -->
-
 		<button
-			class="btn relative w-10 h-10 rounded ml-4 z-10 hover:border-gray-400"
-			style="background-color: {color};"
+			class="border-2 relative w-10 h-10 rounded ml-4 z-10 hover:border-gray-400 {w3color(
+				color
+			).isDark()
+				? 'border-white'
+				: 'border-gray-900'}"
+			style="
+            background: url(img/icons/icon{w3color(color).isDark()
+				? '-white'
+				: ''}.svg) 0.125rem 0.125rem / 2rem no-repeat {color}"
 			on:click|self={() => {
 				pickerOpen = !pickerOpen;
 			}}
@@ -205,7 +206,9 @@
 			</div>
 		</button>
 	</div>
-	<h1 class="text-center">{$session.languageDictionary.appName}</h1>
+	<h1 class="text-center {w3color(color).isDark() ? 'text-white' : 'text-gray-900'}">
+		{$session.languageDictionary.appName}
+	</h1>
 	<div class="mx-auto">
 		<button
 			class="btn mr-2 mb-2"
