@@ -9,6 +9,7 @@ prevent body from scrolling when modal is open
 maybe:
 change saved icon to list icon?
 modal has two sections for history and for favorites, use tabs?
+display colors in color list in caps?
 
 keyboard shortcuts for random, history, favorite, focus to type color, etc
 
