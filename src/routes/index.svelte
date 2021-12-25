@@ -17,7 +17,7 @@
 	let pageLoaded = false;
 	let color = $settings.color || '#000000';
 	let colorPicker;
-	let pickerOpen = true;
+	let pickerOpen = false;
 
 	let historyModal;
 
