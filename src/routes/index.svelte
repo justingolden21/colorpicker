@@ -16,7 +16,6 @@
 
 	let selectedColorMode = 'RGB';
 
-	let color = $settings.color || '#000000';
 	let c;
 	let isFavorite = false;
 
@@ -28,27 +27,23 @@
 
 	let historyList, favoritesList;
 
-	$: if (color) {
-		$settings.color = color;
-		if (colorPicker) colorPicker.value = color;
-		if (setColorProperty) setColorProperty(color);
+	$: if ($settings.color) {
+		if (colorPicker) colorPicker.value = $settings.color;
+		if (setColorProperty) setColorProperty($settings.color);
 		if (pageLoaded) updateLink();
-		if (historyList) historyList.add({ color, name: '' });
+		if (historyList) historyList.add({ color: $settings.color, name: '' });
 		let opacity;
-		if (color.substring(8)) {
-			opacity = Math.round((parseInt(color.slice(-2), 16) / 255) * 100) / 100;
+		if ($settings.color.substring(8)) {
+			opacity = Math.round((parseInt($settings.color.slice(-2), 16) / 255) * 100) / 100;
 		} else {
 			opacity = 1;
 		}
-		c = w3color(color);
+		c = w3color($settings.color);
 		c.opacity = opacity;
 		isFavorite = false;
 	}
 
 	let setColorProperty;
-
-	// updates when `color` updates
-	// $: c = w3color(color);
 
 	$: rgbString = c.toRgbString();
 	$: rgbaString = c.toRgbaString();
@@ -57,7 +52,7 @@
 	$: hslaString = c.toHslaString();
 	$: hwbString = c.toHwbString();
 	$: hwbaString = c.toHwbaString();
-	$: hexString = color.toLowerCase();
+	$: hexString = $settings.color.toLowerCase();
 
 	$: red = c.red;
 	$: green = c.green;
@@ -88,7 +83,7 @@
 		const c = getUrlParam('c');
 		if (c) {
 			// TODO: validation like in readColorString
-			color = '#' + c;
+			$settings.color = '#' + c;
 		}
 
 		pageLoaded = true;
@@ -96,7 +91,7 @@
 
 	const updateLink = () => {
 		if ($settings.colorInUrl) {
-			setUrlParam('c', color.replace('#', ''));
+			setUrlParam('c', $settings.color.replace('#', ''));
 		} else {
 			removeUrlParam();
 		}
@@ -117,7 +112,7 @@
 	const readColorString = (evt) => {
 		const str = evt.target.value;
 		const newColor = w3color(str);
-		if (newColor.valid) color = newColor.toHexString();
+		if (newColor.valid) $settings.color = newColor.toHexString();
 	};
 
 	function handleKeydown(event) {
@@ -128,7 +123,7 @@
 
 	const setColorItem = (str) => {
 		const newColor = w3color(str);
-		if (newColor.valid) color = newColor.toHexString();
+		if (newColor.valid) $settings.color = newColor.toHexString();
 	};
 
 	const setRgbItem = (evt) => {
@@ -209,7 +204,7 @@
 						? 'opacity-100 visible'
 						: 'opacity-0 hidden'}"
 					on:change={(event) => {
-						color = event.target.value;
+						$settings.color = event.target.value;
 						document.getElementById('auto-detect-input').value = '';
 					}}
 					title="Color Picker"
@@ -233,14 +228,14 @@
 				<Icon name="link" class="inline w-4 h-4" />
 				{$settings.colorInUrl ? 'Unlink' : 'Link'}
 			</button>
-			<button class="btn mr-2 mb-2" on:click={() => (color = '#000000')}>
+			<button class="btn mr-2 mb-2" on:click={() => ($settings.color = '#000000')}>
 				<Icon name="reset" class="inline w-4 h-4" />
 				Reset
 			</button>
 			<button
 				class="btn mb-2"
 				on:click={() =>
-					(color =
+					($settings.color =
 						'#' +
 						Math.floor(Math.random() * 0xffffff)
 							.toString(16)
@@ -349,7 +344,7 @@
 	<button
 		class="btn-circle w-12 h-12 mx-auto"
 		on:click={() => {
-			favoritesList.add({ color, name: '' });
+			favoritesList.add({ color: $settings.color, name: '' });
 			isFavorite = true;
 		}}
 		title="Favorite"

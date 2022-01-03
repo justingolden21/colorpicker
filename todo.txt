@@ -2,13 +2,10 @@ bugs:
 set color with opacity through text string
 on drag don't add history items
 local storage sync history
-body focus bug
 color picker title not working
   because of nested div?
 
-  contrast checker
-
-make color an alias for settings.color
+contrast checker
 
 prevent body from scrolling when modal is open
   https://css-tricks.com/prevent-page-scrolling-when-a-modal-is-open/
