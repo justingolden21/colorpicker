@@ -183,10 +183,10 @@
 <svelte:window on:keydown={handleKeydown} />
 
 <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
-	<div class="flex order-3 md:order-1 mx-auto md:mx-0">
+	<div class="order-3 md:order-1 mx-auto md:mx-0">
 		<input
 			id="auto-detect-input"
-			class="w-48"
+			class="w-48 mr-4 mb-4 float-left"
 			autofocus
 			type="text"
 			placeholder={$session.languageDictionary.messages['Type a color...']}
@@ -195,7 +195,7 @@
 		/>
 
 		<button
-			class="btn relative w-10 h-10 ml-4 z-10"
+			class="btn relative w-10 h-10 z-10 float-left"
 			style="background: url(img/icons/icon.svg) 0.125rem 0.125rem / 2rem no-repeat white"
 			on:click|self={() => {
 				pickerOpen = !pickerOpen;

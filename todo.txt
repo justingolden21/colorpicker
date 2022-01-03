@@ -6,6 +6,8 @@ body focus bug
 color picker title not working
   because of nested div?
 
+  contrast checker
+
 make color an alias for settings.color
 
 prevent body from scrolling when modal is open
