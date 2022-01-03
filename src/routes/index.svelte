@@ -14,6 +14,8 @@
 	import Modal from '../components/Modal.svelte';
 	import ColorList from '../components/ColorList.svelte';
 
+	let selectedColorMode = 'RGB';
+
 	let color = $settings.color || '#000000';
 	let c;
 	let isFavorite = false;
@@ -251,9 +253,15 @@
 	</div>
 </div>
 
+<select class="md:hidden surface mx-auto block mt-4" bind:value={selectedColorMode}>
+	{#each ['RGB', 'CMYK', 'HSL', 'HWB'] as colormode}
+		<option value={colormode}>{colormode}</option>
+	{/each}
+</select>
+
 <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
 	{#each ['RGB', 'CMYK', 'HSL', 'HWB'] as colormode, idx}
-		<div class="colormode">
+		<div class="colormode {selectedColorMode !== colormode ? 'hidden md:block' : ''}">
 			<h3 class="text-center mb-4">{colormode}</h3>
 			<div
 				class="grid {colormode === 'CMYK'
