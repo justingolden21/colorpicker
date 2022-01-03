@@ -349,7 +349,7 @@
 		}}
 		title="Favorite"
 	>
-		<Icon name="heart" class="inline w-4 h-4" fillColor={isFavorite ? color : 'none'} />
+		<Icon name="heart" class="inline w-4 h-4" fillColor={isFavorite ? $settings.color : 'none'} />
 	</button>
 </div>
 
