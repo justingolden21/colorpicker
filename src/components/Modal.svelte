@@ -1,4 +1,6 @@
 <script>
+	import { browser } from '$app/env';
+
 	// Note: copied from desktop clock and modified
 
 	import { session } from '$app/stores';
@@ -11,6 +13,10 @@
 	export const show = () => (shown = true);
 	export const hide = () => (shown = false);
 	export const toggle = () => (shown = !shown);
+
+	// prevent scrolling behind modal
+	$: if (shown && browser) document.body.classList.add('overflow-hidden');
+	$: if (!shown && browser) document.body.classList.remove('overflow-hidden');
 </script>
 
 <svelte:window
