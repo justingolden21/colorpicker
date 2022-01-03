@@ -354,11 +354,11 @@
 </div>
 
 <Modal bind:this={historyModal} title="History" icon="history">
-	<ColorList bind:this={historyList} />
+	<ColorList bind:this={historyList} modal={historyModal} />
 </Modal>
 
 <Modal bind:this={favoritesModal} title="Favorites" icon="heart">
-	<ColorList bind:this={favoritesList} />
+	<ColorList bind:this={favoritesList} modal={favoritesModal} />
 </Modal>
 
 <Toasts />

@@ -7,8 +7,10 @@
 	// future: add sorting by date and display date options
 
 	import Icon from './Icon.svelte';
+	import { settings } from './settings';
 
 	export let items = [];
+	export let modal;
 
 	// export const set = (newItems) => {
 	// 	items = newItems;
@@ -53,8 +55,16 @@
 						<!-- <button>edit</button> -->
 						<!-- <button>move</button> -->
 						<!-- <button>share</button> -->
-						<!-- <button>copy</button> -->
 						<button class="btn">
+							<Icon name="copy" class="inline w-4 h-4" />
+						</button>
+						<button
+							class="btn"
+							on:click={() => {
+								$settings.color = item.color;
+								modal.hide();
+							}}
+						>
 							<Icon name="open" class="inline w-4 h-4" />
 						</button>
 						<button class="btn">
