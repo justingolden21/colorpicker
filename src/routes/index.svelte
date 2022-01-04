@@ -375,7 +375,4 @@
 <Toasts />
 
 <style lang="postcss">
-	.colormode {
-		@apply surface p-4;
-	}
 </style>
