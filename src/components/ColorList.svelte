@@ -39,9 +39,7 @@
 		return items.some((x) => x.color === color);
 	};
 
-	export const set = (newItems) => {
-		items = newItems;
-	};
+	export const set = (newItems) => (items = newItems);
 
 	const removeAll = () => (items = []);
 </script>
