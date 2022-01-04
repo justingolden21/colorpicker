@@ -51,6 +51,7 @@ info btn next to input that shows examples of what you can type
 
 far future / maybe:
 color palette generator
+  similar to https://coolors.co/d6f8d6-7fc6a4-5d737e-55505c-e3655b
 get color from img
 get palette from img
 share palettes
