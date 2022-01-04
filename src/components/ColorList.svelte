@@ -13,17 +13,19 @@
 	export let modal;
 	export let copyText;
 
-	// export const set = (newItems) => {
-	// 	items = newItems;
-	// };
+	let lastTimestamp;
 
 	const remove = (timestamp) => {
 		items = items.filter((item) => item.timestamp != timestamp);
 	};
 
-	// todo: dont add duplicate items, check if prev item matches current
 	export const add = (item) => {
 		if (contains(item.color)) return;
+
+		// 100ms timeout for creating new items
+		if (Date.now() - lastTimestamp < 100) return;
+		lastTimestamp = Date.now();
+
 		items = [
 			{
 				...item,

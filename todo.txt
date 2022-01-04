@@ -38,6 +38,8 @@ option to download colors with names as json, option to download css file or cop
 
 info btn with contact. fullscreen btn? fullscreen preview color?
 
+bug: can't delete top most item in color list
+
 settings ideas:
 hex caps or lower
 
