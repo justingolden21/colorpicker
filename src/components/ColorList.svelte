@@ -68,7 +68,7 @@
 						<!-- <button>edit</button> -->
 						<!-- <button>move</button> -->
 						<!-- <button>share</button> -->
-						<button class="btn" on:click={() => copyText(item.color)}>
+						<button class="btn" on:click={() => copyText(item.color)} title="Copy">
 							<Icon name="copy" class="inline w-4 h-4" />
 						</button>
 						<button
@@ -77,13 +77,14 @@
 								$settings.color = item.color;
 								modal.hide();
 							}}
+							title="Open"
 						>
 							<Icon name="open" class="inline w-4 h-4" />
 						</button>
 						<!-- <button class="btn">
 							<Icon name="heart" class="inline w-4 h-4" />
 						</button> -->
-						<button class="btn" on:click={() => remove(item.timestamp)}>
+						<button class="btn" on:click={() => remove(item.timestamp)} title="Remove">
 							<Icon name="close" class="inline w-4 h-4" />
 						</button>
 					</div>
