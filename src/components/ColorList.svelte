@@ -48,7 +48,7 @@
 
 {#if items && items.length > 0}
 	<p>{items.length} items</p>
-	<button class="btn mb-2" on:click={removeAll}>
+	<button class="btn my-2" on:click={removeAll}>
 		<Icon name="close" class="inline w-4 h-4" />
 		Remove All
 	</button>
