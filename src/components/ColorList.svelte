@@ -67,9 +67,9 @@
 						>
 							<Icon name="open" class="inline w-4 h-4" />
 						</button>
-						<button class="btn">
+						<!-- <button class="btn">
 							<Icon name="heart" class="inline w-4 h-4" />
-						</button>
+						</button> -->
 						<button class="btn" on:click={() => remove(item.timestamp)}>
 							<Icon name="close" class="inline w-4 h-4" />
 						</button>
