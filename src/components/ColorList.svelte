@@ -23,6 +23,7 @@
 
 	// todo: dont add duplicate items, check if prev item matches current
 	export const add = (item) => {
+		if (items.includes(item)) return;
 		items = [
 			{
 				...item,
