@@ -1,5 +1,6 @@
 bugs:
 set color with opacity through text string
+can't delete top most item in color list
 color picker button title not working
   because of nested div?
 
@@ -34,17 +35,12 @@ option to download colors with names as json, option to download css file or cop
 
 info btn with contact. fullscreen btn? fullscreen preview color?
 
-bug: can't delete top most item in color list
-
 max 1000 colors in color list?
 google analytics?
 change selection color based on if color isDark?
 
 settings ideas:
 hex caps or lower
-
-future components:
-range inputs, toast for copy, slider for mobile
 
 preview modal with text and other samples, shapes
 
