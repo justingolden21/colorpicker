@@ -270,12 +270,14 @@
 					class="mb-4"
 					value={[rgbString, cmykString, hslString, hwbString][idx]}
 					onChange={readColorString}
+					{copyText}
 				/>
 				{#if colormode !== 'CMYK'}
 					<CopyableInput
 						class="mb-4"
 						value={[rgbaString, null, hslaString, hwbaString][idx]}
 						onChange={readColorString}
+						{copyText}
 					/>
 				{/if}
 				{#if colormode === 'RGB'}
@@ -283,6 +285,7 @@
 						class="mb-4 lg:col-span-2 xl:col-span-1"
 						value={hexString}
 						onChange={readColorString}
+						{copyText}
 					/>
 				{/if}
 			</div>
@@ -355,11 +358,11 @@
 </div>
 
 <Modal bind:this={historyModal} title="History" icon="history">
-	<ColorList bind:this={historyList} modal={historyModal} />
+	<ColorList bind:this={historyList} modal={historyModal} {copyText} />
 </Modal>
 
 <Modal bind:this={favoritesModal} title="Favorites" icon="heart">
-	<ColorList bind:this={favoritesList} modal={favoritesModal} />
+	<ColorList bind:this={favoritesList} modal={favoritesModal} {copyText} />
 </Modal>
 
 <Toasts />

@@ -11,6 +11,7 @@
 
 	export let items = [];
 	export let modal;
+	export let copyText;
 
 	// export const set = (newItems) => {
 	// 	items = newItems;
@@ -55,7 +56,7 @@
 						<!-- <button>edit</button> -->
 						<!-- <button>move</button> -->
 						<!-- <button>share</button> -->
-						<button class="btn">
+						<button class="btn" on:click={() => copyText(item.color)}>
 							<Icon name="copy" class="inline w-4 h-4" />
 						</button>
 						<button

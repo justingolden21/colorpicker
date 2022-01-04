@@ -3,6 +3,7 @@
 
 	export let value;
 	export let onChange;
+	export let copyText;
 
 	let input;
 </script>
@@ -22,14 +23,7 @@
 			input.focus();
 			input.setSelectionRange(0, str.length);
 
-			navigator.clipboard.writeText(str).then(
-				() => {
-					console.log('clipboard successfully set');
-				},
-				() => {
-					console.log('clipboard write failed');
-				}
-			);
+			copyText(str);
 		}}
 		class="btn absolute inset-y-0 right-0 flex items-center"
 		title="Copy"
