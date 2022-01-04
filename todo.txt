@@ -1,8 +1,6 @@
 bugs:
 set color with opacity through text string
-on drag don't add history items
-local storage sync history
-color picker title not working
+color picker button title not working
   because of nested div?
 
 contrast checker
