@@ -22,11 +22,6 @@ color item with arrow down/up that toggles additional btns
 
 future:
 alpha/opacity
-url param
-link to color
-random
-local storage
-history
 save and organize colors
 quick copy for css color, background, background-color, border-color (dropdown for property, dropdown for css/less/sass, dropdown for color format (rgb,hex,hsl))
 three digit hex / four digit hex
