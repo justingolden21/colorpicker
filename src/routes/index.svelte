@@ -32,6 +32,7 @@
 		if (setColorProperty) setColorProperty($settings.color);
 		if (pageLoaded) updateLink();
 		if (historyList) historyList.add({ color: $settings.color, name: '' });
+		if (pageLoaded) document.getElementById('auto-detect-input').value = '';
 
 		c = w3color($settings.color);
 		if ($settings.color.substring(8)) {
@@ -207,7 +208,6 @@
 						: 'opacity-0 hidden'}"
 					on:change={(event) => {
 						$settings.color = event.target.value;
-						document.getElementById('auto-detect-input').value = '';
 					}}
 					title="Color Picker"
 				/>
