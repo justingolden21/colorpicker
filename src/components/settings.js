@@ -2,7 +2,9 @@ import { localStore } from './localStore.js';
 
 export const defaultSettings = {
 	color: '#000000',
-	colorInUrl: false
+	colorInUrl: false,
+	historyList: [],
+	favoritesList: []
 };
 
 // deep copy to preserve original defaultSettings

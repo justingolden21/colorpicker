@@ -23,7 +23,7 @@
 
 	// todo: dont add duplicate items, check if prev item matches current
 	export const add = (item) => {
-		if (items.includes(item)) return;
+		if (contains(item.color)) return;
 		items = [
 			{
 				...item,
@@ -32,6 +32,15 @@
 			...items
 		];
 	};
+
+	export const contains = (color) => {
+		return items.some((x) => x.color === color);
+	};
+
+	export const set = (newItems) => {
+		items = newItems;
+	};
+
 	const removeAll = () => (items = []);
 </script>
 

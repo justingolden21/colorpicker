@@ -17,7 +17,7 @@
 	let selectedColorMode = 'RGB';
 
 	let c;
-	let isFavorite = false;
+	$: isFavorite = favoritesList && favoritesList.contains($settings.color);
 
 	let pageLoaded = false;
 	let colorPicker;
@@ -40,7 +40,6 @@
 		}
 		c = w3color($settings.color);
 		c.opacity = opacity;
-		isFavorite = false;
 	}
 
 	let setColorProperty;
@@ -85,6 +84,9 @@
 			// TODO: validation like in readColorString
 			$settings.color = '#' + c;
 		}
+
+		historyList.set($settings.historyList);
+		favoritesList.set($settings.favoritesList);
 
 		pageLoaded = true;
 	});
@@ -349,7 +351,7 @@
 		class="btn-circle w-12 h-12 mx-auto"
 		on:click={() => {
 			favoritesList.add({ color: $settings.color, name: '' });
-			isFavorite = true;
+			$settings.color = $settings.color; // update `isFavorite`
 		}}
 		title="Favorite"
 	>
@@ -358,11 +360,21 @@
 </div>
 
 <Modal bind:this={historyModal} title="History" icon="history">
-	<ColorList bind:this={historyList} modal={historyModal} {copyText} />
+	<ColorList
+		bind:this={historyList}
+		bind:items={$settings.historyList}
+		modal={historyModal}
+		{copyText}
+	/>
 </Modal>
 
 <Modal bind:this={favoritesModal} title="Favorites" icon="heart">
-	<ColorList bind:this={favoritesList} modal={favoritesModal} {copyText} />
+	<ColorList
+		bind:this={favoritesList}
+		bind:items={$settings.favoritesList}
+		modal={favoritesModal}
+		{copyText}
+	/>
 </Modal>
 
 <Toasts />
