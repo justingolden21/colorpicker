@@ -96,8 +96,9 @@
 			removeUrlParam();
 		}
 	};
-	const copyLink = () => {
-		navigator.clipboard.writeText(window.location.href).then(
+	const copyLink = () => copyText(window.location.href);
+	const copyText = (txt) => {
+		navigator.clipboard.writeText(txt).then(
 			() => {
 				console.log('clipboard successfully set');
 				addToast({ message: 'Copied', type: 'success', timeout: 3000 });
