@@ -32,14 +32,13 @@
 		if (setColorProperty) setColorProperty($settings.color);
 		if (pageLoaded) updateLink();
 		if (historyList) historyList.add({ color: $settings.color, name: '' });
-		let opacity;
-		if ($settings.color.substring(8)) {
-			opacity = Math.round((parseInt($settings.color.slice(-2), 16) / 255) * 100) / 100;
-		} else {
-			opacity = 1;
-		}
+
 		c = w3color($settings.color);
-		c.opacity = opacity;
+		if ($settings.color.substring(8)) {
+			c.opacity = Math.round((parseInt($settings.color.slice(-2), 16) / 255) * 100) / 100;
+		} else {
+			c.opacity = 1;
+		}
 	}
 
 	let setColorProperty;
