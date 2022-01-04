@@ -40,6 +40,10 @@ info btn with contact. fullscreen btn? fullscreen preview color?
 
 bug: can't delete top most item in color list
 
+max 1000 colors in color list?
+google analytics?
+change selection color based on if color isDark?
+
 settings ideas:
 hex caps or lower
 
