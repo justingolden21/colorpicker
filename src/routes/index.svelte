@@ -14,17 +14,15 @@
 	import Modal from '../components/Modal.svelte';
 	import ColorList from '../components/ColorList.svelte';
 
-	let selectedColorMode = 'RGB';
-
 	let c;
 	$: isFavorite = favoritesList && favoritesList.contains($settings.color);
 
 	let pageLoaded = false;
 	let colorPicker;
 	let pickerOpen = false;
+	let selectedColorMode = 'RGB';
 
 	let historyModal, favoritesModal;
-
 	let historyList, favoritesList;
 
 	$: if ($settings.color) {
@@ -113,9 +111,7 @@
 	};
 
 	const readColorString = (evt) => {
-		const str = evt.target.value;
-		const newColor = w3color(str);
-		if (newColor.valid) $settings.color = newColor.toHexString();
+		setColorItem(evt.target.value);
 	};
 
 	function handleKeydown(event) {
