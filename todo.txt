@@ -3,6 +3,9 @@ set color with opacity through text string
 can't delete top most item in color list
 color picker button title not working
   because of nested div?
+opening color picker on mobile shifts viewport width
+
+color picker is unintuitive / hard to find? open by default? move it to permanently open at top of page?
 
 contrast checker
 
