@@ -8,6 +8,12 @@ opening color picker on mobile shifts viewport width
 color picker is unintuitive / hard to find? open by default? move it to permanently open at top of page?
 
 contrast checker
+https://colourcontrast.cc/
+https://coolors.co/contrast-checker/112a46-acc8e5
+
+other inspiration
+https://colorbox.io/?
+https://colors.dopely.top/palette-generator/aW9rbRWffCJ
 
 prevent body from scrolling when modal is open
   https://css-tricks.com/prevent-page-scrolling-when-a-modal-is-open/
